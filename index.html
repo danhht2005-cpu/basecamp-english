@@ -755,8 +755,15 @@
       bar.innerHTML = '<button class="signin-btn" id="signInBtn" type="button">🔑 Đăng nhập Google để đồng bộ</button>';
       document.getElementById("signInBtn").addEventListener("click", function(){
         var provider = new firebase.auth.GoogleAuthProvider();
-        setSyncStatus("Đang chuyển đến trang đăng nhập Google...");
-        auth.signInWithRedirect(provider);
+        auth.signInWithPopup(provider).catch(function(err){
+          var code = err && err.code;
+          if(code === "auth/popup-blocked" || code === "auth/operation-not-supported-in-this-environment" || code === "auth/cancelled-popup-request"){
+            setSyncStatus("Đang chuyển đến trang đăng nhập Google...");
+            auth.signInWithRedirect(provider);
+          } else if(code !== "auth/popup-closed-by-user"){
+            setSyncStatus("Đăng nhập thất bại: " + (code || "thử lại"));
+          }
+        });
       });
     }
   }
