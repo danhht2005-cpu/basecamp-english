@@ -1,0 +1,1597 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base Camp English — Gia sư tiếng Anh cá nhân</title>
+<style>
+  :root{
+    --bg:#f4efe1;
+    --bg-elevated:#fdfaf1;
+    --bg-card:#fffcf5;
+    --bg-sunk:#eae2cc;
+    --ink:#1d2b38;
+    --ink-soft:#54636f;
+    --ink-faint:#8b9198;
+    --accent:#c1601f;
+    --accent-strong:#a24e18;
+    --accent-ink:#fffaf2;
+    --alpine:#3c6b52;
+    --alpine-ink:#eef7f1;
+    --summit:#a13a26;
+    --summit-ink:#fdf0ec;
+    --line:#d9c69f;
+    --line-strong:#c2a56c;
+    --shadow:0 1px 2px rgba(29,43,56,.10), 0 6px 16px -10px rgba(29,43,56,.25);
+    --font-display:"Rockwell","Roboto Slab","Noto Serif",Georgia,serif;
+    --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --font-mono:ui-monospace,"SF Mono",Consolas,"Roboto Mono",monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#101c27; --bg-elevated:#16232f; --bg-card:#192835; --bg-sunk:#0c1620;
+      --ink:#edf1ea; --ink-soft:#a9b9c4; --ink-faint:#71828d;
+      --accent:#ef9c4c; --accent-strong:#f6b06a; --accent-ink:#241203;
+      --alpine:#7cad93; --alpine-ink:#0e1c15;
+      --summit:#e6835f; --summit-ink:#2a0f08;
+      --line:#2c3f50; --line-strong:#3c5468;
+      --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 20px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#101c27; --bg-elevated:#16232f; --bg-card:#192835; --bg-sunk:#0c1620;
+    --ink:#edf1ea; --ink-soft:#a9b9c4; --ink-faint:#71828d;
+    --accent:#ef9c4c; --accent-strong:#f6b06a; --accent-ink:#241203;
+    --alpine:#7cad93; --alpine-ink:#0e1c15;
+    --summit:#e6835f; --summit-ink:#2a0f08;
+    --line:#2c3f50; --line-strong:#3c5468;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 20px -12px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"]{
+    --bg:#f4efe1; --bg-elevated:#fdfaf1; --bg-card:#fffcf5; --bg-sunk:#eae2cc;
+    --ink:#1d2b38; --ink-soft:#54636f; --ink-faint:#8b9198;
+    --accent:#c1601f; --accent-strong:#a24e18; --accent-ink:#fffaf2;
+    --alpine:#3c6b52; --alpine-ink:#eef7f1;
+    --summit:#a13a26; --summit-ink:#fdf0ec;
+    --line:#d9c69f; --line-strong:#c2a56c;
+    --shadow:0 1px 2px rgba(29,43,56,.10), 0 6px 16px -10px rgba(29,43,56,.25);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);}
+  button{font-family:inherit;}
+  .shell{max-width:920px;margin:0 auto;padding:20px 18px 64px;}
+
+  /* ---------- Trailhead header ---------- */
+  .trailhead{
+    position:relative;
+    background:var(--bg-elevated);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:22px 24px 18px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .contour{position:absolute; inset:0; opacity:.35; pointer-events:none;}
+  .trailhead-top{position:relative; display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;}
+  .eyebrow{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(24px,4vw,32px);
+    margin:2px 0 4px;
+    text-wrap:balance;
+    letter-spacing:.01em;
+  }
+  .tagline{color:var(--ink-soft); font-size:14.5px; margin:0; max-width:52ch;}
+  .theme-toggle{
+    border:1px solid var(--line-strong); background:var(--bg-card); color:var(--ink-soft);
+    border-radius:999px; padding:6px 12px; font-size:12px; cursor:pointer;
+  }
+  .theme-toggle:hover{color:var(--ink);}
+  .header-actions{display:flex; flex-direction:column; align-items:flex-end; gap:6px;}
+  .auth-bar{display:flex; align-items:center; gap:8px;}
+  .auth-avatar{width:24px; height:24px; border-radius:50%; border:1px solid var(--line-strong);}
+  .auth-name{max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12.5px; color:var(--ink-soft);}
+  .signin-btn{
+    border:1px solid var(--line-strong); background:var(--bg-card); color:var(--ink);
+    border-radius:999px; padding:6px 12px; font-size:12px; cursor:pointer;
+  }
+  .signin-btn:hover{border-color:var(--accent);}
+  .signout-btn{
+    border:none; background:transparent; color:var(--ink-faint); text-decoration:underline;
+    font-size:11.5px; cursor:pointer; padding:0;
+  }
+  .sync-status{font-size:11px; color:var(--ink-faint);}
+
+  .stat-row{position:relative; display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
+  .stat-tile{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:3px;
+    padding:8px 14px; min-width:96px;
+  }
+  .stat-tile .n{font-family:var(--font-mono); font-variant-numeric:tabular-nums; font-size:19px; font-weight:600; color:var(--accent);}
+  .stat-tile .l{font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em;}
+
+  /* ---------- Trail progress ---------- */
+  .trail{position:relative; margin-top:20px;}
+  .trail-track{position:relative; height:6px; background:var(--bg-sunk); border-radius:3px; overflow:hidden; border:1px solid var(--line);}
+  .trail-fill{height:100%; background:linear-gradient(90deg,var(--alpine),var(--accent)); transition:width .5s ease;}
+  .trail-camps{display:flex; justify-content:space-between; margin-top:8px;}
+  .camp-mark{font-size:11px; color:var(--ink-faint); text-align:center; flex:1; font-family:var(--font-mono);}
+  .camp-mark.reached{color:var(--accent); font-weight:600;}
+  .camp-mark:first-child{text-align:left;}
+  .camp-mark:last-child{text-align:right;}
+
+  /* ---------- Nav ---------- */
+  .campnav{display:flex; gap:6px; margin-top:22px; flex-wrap:wrap; padding-bottom:2px;}
+  .camp-tab{
+    display:flex; align-items:center; gap:8px;
+    background:var(--bg-card); border:1px solid var(--line); border-radius:3px;
+    padding:7px 12px 7px 7px; cursor:pointer; white-space:nowrap; color:var(--ink-soft);
+    transition:border-color .15s, color .15s, background .15s;
+  }
+  .camp-tab:hover{border-color:var(--line-strong); color:var(--ink);}
+  .camp-tab.active{border-color:var(--accent); color:var(--ink); background:var(--bg-elevated);}
+  .blaze{
+    width:24px; height:24px; border-radius:2px; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-size:10.5px; font-weight:700; letter-spacing:-.02em;
+    background:var(--bg-sunk); color:var(--ink-faint); border:1px solid var(--line);
+  }
+  .camp-tab.active .blaze{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
+  .tab-label{font-size:13.5px; font-weight:500;}
+
+  /* ---------- Panels ---------- */
+  .panel{display:none; margin-top:22px;}
+  .panel.active{display:block;}
+  .card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:4px;
+    padding:20px 22px; box-shadow:var(--shadow); margin-bottom:16px;
+  }
+  .card h2{font-family:var(--font-display); font-size:19px; margin:0 0 4px; text-wrap:balance;}
+  .card .sub{color:var(--ink-soft); font-size:13.5px; margin:0 0 14px;}
+  .muted{color:var(--ink-faint); font-size:12.5px;}
+
+  /* dashboard */
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px;}
+  .mastery-row{display:flex; align-items:center; gap:10px; margin:9px 0;}
+  .mastery-label{width:96px; font-size:13px; color:var(--ink-soft); flex-shrink:0;}
+  .mastery-bar{flex:1; height:8px; background:var(--bg-sunk); border-radius:4px; overflow:hidden; border:1px solid var(--line);}
+  .mastery-fill{height:100%; background:var(--alpine);}
+  .mastery-pct{width:38px; text-align:right; font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); font-variant-numeric:tabular-nums;}
+  .callout{
+    border:1px dashed var(--accent); background:color-mix(in srgb, var(--accent) 8%, var(--bg-card));
+    border-radius:4px; padding:14px 16px; font-size:14px;
+  }
+  .callout b{color:var(--accent-strong);}
+
+  /* buttons */
+  .btn{
+    border:1px solid var(--line-strong); background:var(--bg-elevated); color:var(--ink);
+    border-radius:3px; padding:9px 16px; font-size:13.5px; font-weight:600; cursor:pointer;
+  }
+  .btn:hover{border-color:var(--accent);}
+  .btn:focus-visible, a:focus-visible, .camp-tab:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px;
+  }
+  .btn-primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink);}
+  .btn-primary:hover{background:var(--accent-strong); border-color:var(--accent-strong);}
+  .btn-ghost{background:transparent; border-color:transparent; color:var(--ink-soft);}
+  .btn-ghost:hover{color:var(--summit); text-decoration:underline;}
+  .btn-row{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;}
+  .btn:disabled{opacity:.45; cursor:not-allowed;}
+
+  /* flashcard */
+  .flash-wrap{display:flex; flex-direction:column; align-items:center; gap:14px;}
+  .flashcard{
+    width:100%; max-width:420px; min-height:190px; perspective:1200px; cursor:pointer;
+  }
+  .flash-inner{
+    position:relative; width:100%; height:100%; min-height:190px; text-align:center;
+    transition:transform .5s; transform-style:preserve-3d;
+    border:1px solid var(--line); border-radius:6px; background:var(--bg-elevated);
+  }
+  .flash-inner.flipped{transform:rotateY(180deg);}
+  .flash-face{
+    position:absolute; inset:0; backface-visibility:hidden; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; padding:20px; border-radius:6px;
+  }
+  .flash-back{transform:rotateY(180deg); background:var(--bg-sunk); text-align:left; align-items:flex-start;}
+  .flash-word{font-family:var(--font-display); font-size:26px; font-weight:700;}
+  .flash-ipa{font-family:var(--font-mono); color:var(--ink-faint); font-size:13.5px; margin-top:4px;}
+  .flash-hint{position:absolute; bottom:10px; font-size:11px; color:var(--ink-faint);}
+  .flash-icon{
+    width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:color-mix(in srgb, var(--alpine) 16%, var(--bg-elevated)); border:1px solid var(--line-strong);
+    margin-bottom:10px; flex-shrink:0; font-size:28px; line-height:1;
+  }
+  .flash-back .flash-icon{width:38px; height:38px; margin:0 0 6px; font-size:19px;}
+  .flash-back .row{margin-bottom:8px; font-size:14px;}
+  .flash-back .row b{display:block; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:2px; font-weight:700;}
+  .progress-line{font-size:12.5px; color:var(--ink-faint); font-family:var(--font-mono);}
+  .box-pill{display:inline-block; padding:1px 8px; border-radius:999px; background:var(--bg-sunk); border:1px solid var(--line); font-size:11px; font-family:var(--font-mono);}
+
+  /* exercises */
+  .ex-item{border-top:1px solid var(--line); padding:16px 0;}
+  .ex-item:first-of-type{border-top:none; padding-top:4px;}
+  .ex-prompt{font-size:15.5px; margin-bottom:10px;}
+  .ex-prompt code{background:var(--bg-sunk); padding:1px 5px; border-radius:3px; font-family:var(--font-mono);}
+  .ex-input{
+    width:100%; max-width:280px; padding:8px 10px; border:1px solid var(--line-strong);
+    border-radius:3px; background:var(--bg-elevated); color:var(--ink); font-size:14px;
+  }
+  .mcq{display:flex; flex-direction:column; gap:7px; max-width:420px;}
+  .mcq label{
+    display:flex; gap:8px; align-items:flex-start; padding:8px 10px; border:1px solid var(--line);
+    border-radius:3px; cursor:pointer; font-size:14px; background:var(--bg-elevated);
+  }
+  .mcq label:hover{border-color:var(--line-strong);}
+  .mcq input{margin-top:3px;}
+  .feedback{margin-top:10px; padding:10px 12px; border-radius:3px; font-size:13.5px; display:none;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:color-mix(in srgb, var(--alpine) 16%, var(--bg-card)); color:var(--alpine); border:1px solid var(--alpine);}
+  .feedback.wrong{background:color-mix(in srgb, var(--summit) 14%, var(--bg-card)); color:var(--summit); border:1px solid var(--summit);}
+  .feedback .expl{color:var(--ink-soft); margin-top:4px; display:block;}
+
+  /* passages */
+  .passage-list{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+  .passage-chip{
+    border:1px solid var(--line); background:var(--bg-elevated); border-radius:3px; padding:7px 12px;
+    font-size:13px; cursor:pointer; color:var(--ink-soft);
+  }
+  .passage-chip.active{border-color:var(--accent); color:var(--ink); background:var(--bg-card);}
+  .passage-text{
+    font-size:15px; line-height:1.7; background:var(--bg-sunk); border-left:3px solid var(--alpine);
+    padding:14px 16px; border-radius:0 3px 3px 0; margin-bottom:16px;
+  }
+  .score-badge{
+    font-family:var(--font-mono); font-size:12.5px; background:var(--bg-sunk); border:1px solid var(--line);
+    padding:3px 10px; border-radius:999px; display:inline-block;
+  }
+
+  /* listening */
+  .play-btn{
+    display:inline-flex; align-items:center; gap:8px; background:var(--alpine); color:var(--alpine-ink);
+    border:none; border-radius:3px; padding:10px 18px; font-size:14px; font-weight:600; cursor:pointer;
+  }
+  .play-btn:hover{opacity:.9;}
+
+  .voice-panel{
+    background:var(--bg-sunk); border:1px solid var(--line); border-radius:4px; padding:14px 16px; margin-bottom:16px;
+  }
+  .voice-panel .vp-title{font-size:12.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:10px;}
+  .vp-row{display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap;}
+  .vp-row label{font-size:12.5px; color:var(--ink-faint); width:64px; flex-shrink:0;}
+  .vp-row select{
+    flex:1; min-width:180px; padding:6px 8px; border:1px solid var(--line-strong); border-radius:3px;
+    background:var(--bg-elevated); color:var(--ink); font-size:13px;
+  }
+  .vp-row input[type="range"]{flex:1; min-width:120px; accent-color:var(--accent);}
+  .vp-row .vp-val{width:34px; text-align:right; font-family:var(--font-mono); font-size:12px; color:var(--ink-faint);}
+  .voice-note{font-size:12px; color:var(--ink-faint); margin-top:6px;}
+  .transcript-toggle{margin-left:10px; font-size:12.5px;}
+  .transcript-box{
+    display:none; margin-top:12px; padding:12px 14px; background:var(--bg-sunk); border-radius:3px;
+    font-style:italic; font-size:14px; color:var(--ink-soft);
+  }
+  .transcript-box.show{display:block;}
+
+  /* writing */
+  textarea.ex-input{width:100%; max-width:100%; min-height:140px; font-family:var(--font-body); resize:vertical; line-height:1.6;}
+  .checklist{list-style:none; padding:0; margin:10px 0 0; font-size:13.5px; color:var(--ink-soft);}
+  .checklist li{padding:3px 0 3px 20px; position:relative;}
+  .checklist li::before{content:"—"; position:absolute; left:0; color:var(--ink-faint);}
+  .hint-list{list-style:none; padding:0; margin:10px 0 0;}
+  .hint-list li{
+    font-size:13.5px; padding:8px 10px; border-left:3px solid var(--summit); background:var(--bg-sunk);
+    margin-bottom:6px; border-radius:0 3px 3px 0;
+  }
+  .entry-log{margin-top:18px;}
+  .entry{border-top:1px solid var(--line); padding:10px 0; font-size:13.5px;}
+  .entry .meta{color:var(--ink-faint); font-size:11.5px; font-family:var(--font-mono); margin-bottom:3px;}
+
+  /* speaking */
+  .speak-item{
+    display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;
+    border-top:1px solid var(--line); padding:14px 0;
+  }
+  .speak-item:first-of-type{border-top:none;}
+  .speak-phrase{font-size:16px;}
+  .speak-tip{font-size:12.5px; color:var(--ink-faint); margin-top:3px;}
+  .rate-row{display:flex; gap:6px;}
+  .rate-btn{
+    border:1px solid var(--line); background:var(--bg-elevated); border-radius:3px; padding:6px 11px;
+    font-size:12.5px; cursor:pointer; color:var(--ink-soft);
+  }
+  .rate-btn.picked{border-color:var(--accent); color:var(--accent-strong); background:color-mix(in srgb, var(--accent) 10%, var(--bg-card));}
+  .stt-panel{margin-top:10px; padding:10px 12px; background:var(--bg-sunk); border-radius:3px; font-size:13.5px; max-width:480px;}
+  .stt-status{color:var(--ink-faint); font-size:12.5px;}
+  .stt-target{margin-top:6px; line-height:1.9; font-size:15px;}
+  .stt-word{padding:1px 4px; border-radius:3px;}
+  .stt-word.match{background:color-mix(in srgb, var(--alpine) 22%, transparent); color:var(--alpine);}
+  .stt-word.miss{background:color-mix(in srgb, var(--summit) 16%, transparent); color:var(--summit); text-decoration:line-through;}
+  .stt-heard{margin-top:6px; color:var(--ink-soft); font-style:italic; font-size:13px;}
+  .stt-score{font-family:var(--font-mono); font-weight:700;}
+  .stt-score.good{color:var(--alpine);}
+  .stt-score.bad{color:var(--summit);}
+  .stt-unsupported{font-size:12px; color:var(--ink-faint); font-style:italic;}
+
+  footer{margin-top:32px; text-align:center;}
+
+  @media (prefers-reduced-motion: reduce){
+    .trail-fill, .flash-inner{transition:none;}
+  }
+  @media (max-width:520px){
+    .stat-tile{min-width:80px; padding:7px 10px;}
+    .mastery-label{width:76px; font-size:12px;}
+  }
+</style>
+
+<div class="shell">
+
+  <header class="trailhead">
+    <svg class="contour" viewBox="0 0 800 160" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,140 Q100,100 200,130 T400,120 T600,140 T800,110" fill="none" stroke="var(--line-strong)" stroke-width="1"/>
+      <path d="M0,110 Q120,70 240,100 T480,90 T720,105 T800,80" fill="none" stroke="var(--line-strong)" stroke-width="1"/>
+      <path d="M0,80 Q140,40 260,70 T520,55 T760,75 T800,50" fill="none" stroke="var(--line-strong)" stroke-width="1"/>
+    </svg>
+    <div class="trailhead-top">
+      <div>
+        <div class="eyebrow">Bản đồ hành trình cá nhân</div>
+        <h1>Base Camp English</h1>
+        <p class="tagline">Không đỉnh núi nào leo trong một ngày — mỗi bài tập là một bước lên dốc. Luyện đều, theo đúng điểm yếu của bạn.</p>
+      </div>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button">Giao diện: Hệ thống</button>
+        <div class="auth-bar" id="authBar"></div>
+        <div class="sync-status" id="syncStatus"></div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-tile"><div class="n" id="statXp">0</div><div class="l">Điểm XP</div></div>
+      <div class="stat-tile"><div class="n" id="statStreak">0</div><div class="l">Chuỗi ngày</div></div>
+      <div class="stat-tile"><div class="n" id="statCamp">Base Camp</div><div class="l">Trạm hiện tại</div></div>
+    </div>
+
+    <div class="trail">
+      <div class="trail-track"><div class="trail-fill" id="trailFill" style="width:0%"></div></div>
+      <div class="trail-camps" id="trailCamps"></div>
+    </div>
+
+    <nav class="campnav" id="campNav">
+      <button class="camp-tab" data-tab="dash"><span class="blaze">TQ</span><span class="tab-label">Tổng quan</span></button>
+      <button class="camp-tab" data-tab="vocab"><span class="blaze">TV</span><span class="tab-label">Từ vựng</span></button>
+      <button class="camp-tab" data-tab="grammar"><span class="blaze">NP</span><span class="tab-label">Ngữ pháp</span></button>
+      <button class="camp-tab" data-tab="reading"><span class="blaze">ĐH</span><span class="tab-label">Đọc hiểu</span></button>
+      <button class="camp-tab" data-tab="listening"><span class="blaze">NG</span><span class="tab-label">Nghe</span></button>
+      <button class="camp-tab" data-tab="speaking"><span class="blaze">N</span><span class="tab-label">Nói</span></button>
+      <button class="camp-tab" data-tab="writing"><span class="blaze">V</span><span class="tab-label">Viết</span></button>
+    </nav>
+  </header>
+
+  <!-- ================= DASHBOARD ================= -->
+  <section class="panel" id="panel-dash">
+    <div class="card">
+      <h2>Gợi ý cho hôm nay</h2>
+      <div class="callout" id="dashSuggestion">Đang tính toán...</div>
+    </div>
+    <div class="card">
+      <h2>Mức độ vững của từng kỹ năng</h2>
+      <p class="sub">Dựa trên kết quả bạn làm trong app này, không phải bài kiểm tra đầu vào.</p>
+      <div id="masteryList"></div>
+    </div>
+    <div class="card">
+      <h2>Ghi nhớ từ buổi kiểm tra trình độ</h2>
+      <p class="sub" style="margin-bottom:6px;">Điểm yếu chính: <b style="color:var(--summit);">thì hoàn thành</b> (present perfect, past perfect, câu điều kiện loại 3) và <b style="color:var(--summit);">collocation</b>. Điểm mạnh: đọc hiểu. App này ưu tiên bài tập vào đúng chỗ yếu.</p>
+      <button class="btn btn-ghost" id="resetBtn" type="button">Đặt lại toàn bộ tiến độ</button>
+    </div>
+    <div class="card">
+      <h2>Mang tiến độ sang máy khác</h2>
+      <p class="sub">Tiến độ chỉ lưu trong trình duyệt này (localStorage), không tự đồng bộ qua máy khác. Xuất ra file, lưu file đó vào cùng thư mục Google Drive với app này, rồi Nhập lại ở máy kia để tiếp tục đúng chỗ.</p>
+      <div class="btn-row">
+        <button class="btn" id="exportBtn" type="button">⬇️ Xuất tiến độ</button>
+        <button class="btn" id="importBtn" type="button">⬆️ Nhập tiến độ</button>
+        <input type="file" id="importFile" accept="application/json" style="display:none">
+      </div>
+      <div class="muted" id="importStatus" style="margin-top:8px;"></div>
+    </div>
+  </section>
+
+  <!-- ================= VOCAB ================= -->
+  <section class="panel" id="panel-vocab">
+    <div class="card">
+      <h2>Từ vựng &amp; collocation</h2>
+      <p class="sub">Bấm vào thẻ để lật. Thẻ được chọn ưu tiên theo mức độ bạn chưa nhớ (kiểu Leitner).</p>
+      <div class="flash-wrap">
+        <div class="progress-line" id="vocabProgress">Thẻ 1/8 trong phiên · <span class="box-pill">Box —</span></div>
+        <div class="flashcard" id="flashcard">
+          <div class="flash-inner" id="flashInner">
+            <div class="flash-face flash-front">
+              <div class="flash-icon" id="flashEmojiFront">🏆</div>
+              <div class="flash-word" id="flashWord">word</div>
+              <div class="flash-ipa" id="flashIpa">/wɜːd/</div>
+              <div class="flash-hint">bấm để lật thẻ</div>
+            </div>
+            <div class="flash-face flash-back">
+              <div class="flash-icon" id="flashEmojiBack">🏆</div>
+              <div class="row"><b>Nghĩa</b><span id="flashVi"></span></div>
+              <div class="row"><b>Ví dụ</b><span id="flashEx"></span></div>
+              <div class="row"><b>Lưu ý</b><span id="flashNote"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-row" id="vocabBtnRow">
+          <button class="btn" id="vocabForgot" type="button">Chưa nhớ</button>
+          <button class="btn btn-primary" id="vocabKnew" type="button">Nhớ rồi</button>
+        </div>
+        <div class="btn-row" id="vocabRestartRow" style="display:none;">
+          <button class="btn btn-primary" id="vocabRestart" type="button">Bắt đầu phiên mới</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GRAMMAR ================= -->
+  <section class="panel" id="panel-grammar">
+    <div class="card">
+      <h2>Ngữ pháp — trọng tâm: thì hoàn thành</h2>
+      <p class="sub">Điền dạng đúng của động từ trong ngoặc, sau đó bấm Kiểm tra. <span class="score-badge" id="grammarScore">0/0</span></p>
+      <div id="grammarList"></div>
+    </div>
+  </section>
+
+  <!-- ================= READING ================= -->
+  <section class="panel" id="panel-reading">
+    <div class="card">
+      <h2>Đọc hiểu</h2>
+      <p class="sub">Chọn một đoạn văn, đọc kỹ rồi trả lời câu hỏi bên dưới.</p>
+      <div class="passage-list" id="passageList"></div>
+      <div id="passageBody"></div>
+    </div>
+  </section>
+
+  <!-- ================= LISTENING ================= -->
+  <section class="panel" id="panel-listening">
+    <div class="card">
+      <h2>Nghe hiểu</h2>
+      <p class="sub">Nghe bằng giọng đọc của trình duyệt (miễn phí, không cần mạng sau khi tải trang). Cố nghe trước khi xem transcript.</p>
+
+      <div class="voice-panel">
+        <div class="vp-title">Cài đặt giọng đọc</div>
+        <div class="vp-row">
+          <label for="voiceSelect">Giọng</label>
+          <select id="voiceSelect"></select>
+        </div>
+        <div class="vp-row">
+          <label for="rateRange">Tốc độ</label>
+          <input type="range" id="rateRange" min="0.6" max="1.3" step="0.05">
+          <span class="vp-val" id="rateVal">–</span>
+        </div>
+        <div class="vp-row">
+          <label for="pitchRange">Cao độ</label>
+          <input type="range" id="pitchRange" min="0.8" max="1.4" step="0.05">
+          <span class="vp-val" id="pitchVal">–</span>
+        </div>
+        <button class="btn" id="voiceTestBtn" type="button">🔊 Nghe thử</button>
+        <p class="voice-note">Câu sẽ được đọc theo từng câu, có nghỉ nhẹ và lên giọng ở cuối câu hỏi — gần với ngữ điệu thật hơn. Nếu giọng mặc định nghe đều đều, hãy thử đổi sang giọng có chữ "Natural / Online / Neural" trong danh sách (thường có sẵn trên Edge/Chrome ở Windows 10-11) — giọng này áp dụng cho cả tab Nghe và Nói.</p>
+      </div>
+
+      <div class="passage-list" id="listenList"></div>
+      <div id="listenBody"></div>
+    </div>
+  </section>
+
+  <!-- ================= SPEAKING ================= -->
+  <section class="panel" id="panel-speaking">
+    <div class="card">
+      <h2>Nói — luyện nhại theo (shadowing)</h2>
+      <p class="sub">Bấm "Nghe mẫu", sau đó nói to lại đúng câu đó 2-3 lần. Giọng đọc dùng chung cài đặt với tab <b>Nghe</b> — sang đó nếu muốn đổi giọng, tốc độ hoặc cao độ. Bấm "🎤 Ghi âm & kiểm tra" để hệ thống nghe và chấm độ chính xác so với câu mẫu — cần cho phép micro và có kết nối mạng, hoạt động tốt nhất trên Chrome hoặc Edge.</p>
+      <div id="speakList"></div>
+    </div>
+  </section>
+
+  <!-- ================= WRITING ================= -->
+  <section class="panel" id="panel-writing">
+    <div class="card">
+      <h2>Viết</h2>
+      <p class="sub">Chọn đề, viết ít nhất 3-4 câu, rồi bấm Kiểm tra nhanh để soi lỗi thường gặp (chính tả, viết hoa...). Đây không phải chấm ngữ pháp đầy đủ — hãy tự đối chiếu với checklist bên dưới.</p>
+      <div class="passage-list" id="writePromptList"></div>
+      <textarea class="ex-input" id="writeArea" placeholder="Viết câu trả lời của bạn ở đây..."></textarea>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="writeCheckBtn" type="button">Kiểm tra nhanh</button>
+        <button class="btn" id="writeSaveBtn" type="button">Lưu bài viết</button>
+      </div>
+      <ul class="hint-list" id="writeHints"></ul>
+      <ul class="checklist" id="writeChecklist"></ul>
+      <div class="entry-log" id="writeLog"></div>
+    </div>
+  </section>
+
+  <footer class="muted">Tiến độ luôn được lưu trên máy này. Nếu đăng nhập Google, tiến độ còn được đồng bộ lên tài khoản của bạn để dùng ở máy/điện thoại khác.</footer>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* ============ CLOUD SYNC (Firebase) ============ */
+  var firebaseConfig = {
+    apiKey: "AIzaSyAbkaPM0RF74KkUVCE5QobxYWp6nX-1zC0",
+    authDomain: "basecamp-english.firebaseapp.com",
+    projectId: "basecamp-english",
+    storageBucket: "basecamp-english.firebasestorage.app",
+    messagingSenderId: "766175752355",
+    appId: "1:766175752355:web:7650773a01a1618e8ccf16"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var auth = firebase.auth();
+  var db = firebase.firestore();
+  try{ db.enablePersistence({synchronizeTabs:true}).catch(function(){}); }catch(e){}
+
+  /* ============ CONTENT ============ */
+  var VOCAB = [
+    {en:"achieve a goal", ipa:"/əˈtʃiːv/", vi:"đạt được mục tiêu", ex:"She achieved her goal of running a marathon.", note:"Không dùng 'achieve' cho núi — xem thẻ 'reach a peak'.", emoji:"🏆"},
+    {en:"reach / climb a peak", ipa:"/riːtʃ/ /klaɪm/", vi:"chinh phục một đỉnh núi", ex:"They finally reached the peak after six hours.", note:"Collocation đúng thay cho 'achieve a peak'.", emoji:"🏔️"},
+    {en:"get along with sb", ipa:"/ɡet əˈlɔːŋ wɪð/", vi:"hòa hợp, hợp nhau với ai đó", ex:"I get along well with my new colleagues.", note:"KHÔNG có nghĩa 'đi cùng ai đó'.", emoji:"🤝"},
+    {en:"reluctant (to do sth)", ipa:"/rɪˈlʌktənt/", vi:"miễn cưỡng, không muốn", ex:"He was reluctant to sign the contract.", note:"Luôn đi với 'to V'.", emoji:"😬"},
+    {en:"look forward to sth", ipa:"/lʊk ˈfɔːwəd tuː/", vi:"mong chờ điều gì", ex:"I'm looking forward to the weekend.", note:"'to' ở đây là giới từ → theo sau là V-ing/danh từ, không phải V nguyên mẫu.", emoji:"🤩"},
+    {en:"in charge of sth", ipa:"/ɪn tʃɑːdʒ əv/", vi:"phụ trách, chịu trách nhiệm về", ex:"She is in charge of the marketing team.", note:"Không dùng 'in charge for'.", emoji:"🧑‍💼"},
+    {en:"make a decision", ipa:"/meɪk ə dɪˈsɪʒn/", vi:"đưa ra quyết định", ex:"We need to make a decision by Friday.", note:"Dùng 'make', không dùng 'do a decision'.", emoji:"🤔"},
+    {en:"take place", ipa:"/teɪk pleɪs/", vi:"diễn ra, xảy ra", ex:"The wedding took place in a small church.", note:"Không cần giới từ trước 'place' ở đây.", emoji:"📍"},
+    {en:"run out of sth", ipa:"/rʌn aʊt əv/", vi:"hết, cạn kiệt thứ gì", ex:"We ran out of milk this morning.", note:"Chủ ngữ là người/nơi hết đồ, không phải đồ vật.", emoji:"🪫"},
+    {en:"come up with sth", ipa:"/kʌm ʌp wɪð/", vi:"nghĩ ra, đề xuất", ex:"He came up with a great idea.", note:"Cụm động từ 3 thành phần, không tách rời.", emoji:"💡"},
+    {en:"give up (on sth)", ipa:"/ɡɪv ʌp/", vi:"từ bỏ", ex:"Don't give up on your dream.", note:"Có thể tách: give it up.", emoji:"🏳️"},
+    {en:"figure sth out", ipa:"/ˈfɪɡə aʊt/", vi:"tìm ra, hiểu ra", ex:"I finally figured out the problem.", note:"Cụm động từ có thể tách.", emoji:"🧩"},
+    {en:"on purpose", ipa:"/ɒn ˈpɜːpəs/", vi:"cố ý", ex:"He didn't break it on purpose.", note:"Trái nghĩa với 'by accident'.", emoji:"🎯"},
+    {en:"by accident", ipa:"/baɪ ˈæksɪdənt/", vi:"vô tình, tình cờ", ex:"I found the file by accident.", note:"Trái nghĩa với 'on purpose'.", emoji:"🎲"},
+    {en:"keep in touch", ipa:"/kiːp ɪn tʌtʃ/", vi:"giữ liên lạc", ex:"Let's keep in touch after graduation.", note:"Không dùng 'keep contact'.", emoji:"📞"},
+    {en:"make progress", ipa:"/meɪk ˈprəʊɡres/", vi:"tiến bộ", ex:"You've made a lot of progress this month.", note:"'progress' không đếm được, không có 'a progress'.", emoji:"📈"},
+    {en:"get used to sth", ipa:"/ɡet juːzd tuː/", vi:"quen dần với điều gì", ex:"I'm getting used to the new schedule.", note:"Khác với 'used to + V' (đã từng làm gì trong quá khứ).", emoji:"🔄"},
+    {en:"point sth out", ipa:"/pɔɪnt aʊt/", vi:"chỉ ra, nêu ra", ex:"She pointed out a mistake in the report.", note:"Cụm động từ có thể tách.", emoji:"👉"},
+    {en:"put sth off", ipa:"/pʊt ɒf/", vi:"trì hoãn", ex:"Stop putting off your homework.", note:"Đồng nghĩa với 'postpone'.", emoji:"😴"},
+    {en:"catch up on sth", ipa:"/kætʃ ʌp ɒn/", vi:"bắt kịp, làm bù việc còn dang dở", ex:"I need to catch up on sleep this weekend.", note:"Thường đi với sleep, work, news.", emoji:"🏃"}
+  ];
+
+  var GRAMMAR = [
+    {p:"By the time she arrived, the meeting {blank} (already / start).", a:["had already started","had started already"], ex:"had already started", expl:"'By the time + quá khứ đơn' ở mệnh đề sau ⇒ mệnh đề trước dùng quá khứ hoàn thành (had + P2) vì việc đó xảy ra TRƯỚC một mốc quá khứ khác.", cat:"past perfect"},
+    {p:"If I {blank} (know) about the traffic, I would have left earlier.", a:["had known"], ex:"had known", expl:"Câu điều kiện loại 3 (giả định trái với quá khứ): If + had + P2, ... would have + P2.", cat:"conditional 3"},
+    {p:"She is one of the most talented people I {blank} (ever / meet).", a:["have ever met","'ve ever met"], ex:"have ever met", expl:"Present perfect: have/has + P2, dùng khi nói về kinh nghiệm tính đến hiện tại.", cat:"present perfect"},
+    {p:"I {blank} (finish) my homework, so I can go out now.", a:["have finished","'ve finished"], ex:"have finished", expl:"Present perfect diễn tả hành động vừa hoàn thành, có kết quả ở hiện tại.", cat:"present perfect"},
+    {p:"When I got home, my brother {blank} (already / eat) all the food.", a:["had already eaten","had eaten already"], ex:"had already eaten", expl:"Hành động 'ăn hết đồ ăn' xảy ra TRƯỚC hành động 'về nhà' (quá khứ đơn) ⇒ dùng quá khứ hoàn thành.", cat:"past perfect"},
+    {p:"If she {blank} (study) harder, she would have passed the exam.", a:["had studied"], ex:"had studied", expl:"Điều kiện loại 3: giả định về một việc KHÔNG xảy ra trong quá khứ.", cat:"conditional 3"},
+    {p:"They {blank} (live) in this city since 2015.", a:["have lived","'ve lived"], ex:"have lived", expl:"'since + mốc thời gian' luôn đi với thì hoàn thành (present perfect), không dùng thì hiện tại đơn.", cat:"present perfect"},
+    {p:"We {blank} (never / see) such a beautiful sunset before.", a:["had never seen"], ex:"had never seen", expl:"So sánh với một mốc trong quá khứ ('before' một sự việc quá khứ khác) ⇒ quá khứ hoàn thành.", cat:"past perfect"},
+    {p:"If I {blank} (be) you, I would have accepted the job offer.", a:["had been"], ex:"had been", expl:"Điều kiện loại 3 dùng cho lời khuyên/giả định về quá khứ, không dùng cho hiện tại.", cat:"conditional 3"},
+    {p:"He {blank} (work) here for five years now.", a:["has worked","has been working"], ex:"has worked", expl:"'for + khoảng thời gian' + 'now' ⇒ present perfect, nhấn mạnh việc còn tiếp diễn đến hiện tại.", cat:"present perfect"},
+    {p:"By 2020, the company {blank} (open) 50 new stores.", a:["had opened"], ex:"had opened", expl:"'By + mốc thời gian trong quá khứ' ⇒ quá khứ hoàn thành, việc hoàn tất trước mốc đó.", cat:"past perfect"},
+    {p:"I wish I {blank} (know) the answer when the teacher asked me.", a:["had known"], ex:"had known", expl:"'I wish + had + P2' diễn tả tiếc nuối về quá khứ, cùng cấu trúc với điều kiện loại 3.", cat:"conditional 3"},
+    {p:"She {blank} (not / finish) the report yet — can you wait?", a:["has not finished","hasn't finished"], ex:"hasn't finished", expl:"'yet' trong câu phủ định/nghi vấn thường đi với present perfect.", cat:"present perfect"},
+    {p:"Yesterday, before he called me, I {blank} (already / leave) the office.", a:["had already left"], ex:"had already left", expl:"'trước khi anh ấy gọi' là mốc quá khứ; việc rời văn phòng xảy ra trước mốc đó ⇒ quá khứ hoàn thành.", cat:"past perfect"},
+    {p:"My guitar teacher said I {blank} (improve) a lot this year.", a:["have improved","'ve improved"], ex:"have improved", expl:"Present perfect cho một quá trình tính đến hiện tại (this year vẫn đang diễn ra).", cat:"present perfect"},
+    {p:"Choose the correct sentence about a habit in the past.", a:["I used to play football every weekend."], ex:"I used to play football every weekend.", expl:"'used to + V' diễn tả thói quen/tình trạng trong quá khứ, nay không còn nữa — khác với 'get used to'.", cat:"mixed", type:"mcq", options:["I used to play football every weekend.","I use to playing football every weekend.","I am used to play football every weekend."]},
+    {p:"Choose the sentence with correct word order.", a:["She quickly figured the problem out."], ex:"She quickly figured the problem out.", expl:"Cụm động từ tách được (figure out) có thể chèn tân ngữ vào giữa: figure it/the problem out.", cat:"mixed", type:"mcq", options:["She quickly figured the problem out.","She quickly figured out.","She quickly out figured the problem."]},
+    {p:"They {blank} (just / arrive) when the show started.", a:["had just arrived"], ex:"had just arrived", expl:"Hành động 'vừa đến' xảy ra ngay trước một mốc quá khứ khác (buổi diễn bắt đầu) ⇒ quá khứ hoàn thành.", cat:"past perfect"},
+    {p:"If you {blank} (ask) me, I would have told you the truth.", a:["had asked"], ex:"had asked", expl:"Điều kiện loại 3: giả định về một hành động không xảy ra trong quá khứ.", cat:"conditional 3"},
+    {p:"I {blank} (never / try) sushi before last night.", a:["had never tried"], ex:"had never tried", expl:"So sánh với mốc 'last night' trong quá khứ ⇒ quá khứ hoàn thành.", cat:"past perfect"},
+    {p:"We {blank} (know) each other for ten years.", a:["have known","'ve known"], ex:"have known", expl:"'for + khoảng thời gian' diễn tả trạng thái kéo dài đến hiện tại ⇒ present perfect.", cat:"present perfect"},
+    {p:"If they {blank} (leave) earlier, they wouldn't have missed the flight.", a:["had left"], ex:"had left", expl:"Điều kiện loại 3: kết quả trái ngược với những gì đã thực sự xảy ra.", cat:"conditional 3"},
+    {p:"She {blank} (just / send) the email — check your inbox.", a:["has just sent","'s just sent"], ex:"has just sent", expl:"'just' với present perfect diễn tả hành động vừa mới hoàn thành.", cat:"present perfect"}
+  ];
+
+  var READING = [
+    {title:"Remote Work", text:"Remote work has reshaped how companies think about productivity. While some argue that employees are more focused without office distractions, others believe collaboration suffers when teams rarely meet in person. Many companies now try a hybrid model, asking staff to come in two or three days a week.",
+      qs:[
+        {q:"What is the passage mainly comparing?", options:["Remote work vs. office work","Two companies' profits","Old vs. new technology"], a:0},
+        {q:"What does 'distractions' most likely mean here?", options:["Achievements","Interruptions","Benefits"], a:1},
+        {q:"What solution do many companies try?", options:["Full remote only","A hybrid model","Closing the office"], a:1}
+      ]},
+    {title:"Learning an Instrument", text:"Learning a musical instrument as an adult is different from learning as a child. Adults often understand music theory faster, but they may feel more self-conscious about making mistakes in front of others. Experts suggest that consistent short practice sessions work better than occasional long ones.",
+      qs:[
+        {q:"According to the passage, what do adults often learn faster than children?", options:["Finger speed","Music theory","Stage confidence"], a:1},
+        {q:"What do experts recommend?", options:["Long practice once a week","Short, consistent practice","Practicing only with a teacher"], a:1},
+        {q:"What challenge do adult learners often face?", options:["Lack of free time only","Feeling self-conscious about mistakes","Inability to read notes"], a:1}
+      ]},
+    {title:"Weekend Habits", text:"A recent survey found that people who spend their weekends on physical activities, such as playing sports or hiking, report higher energy levels during the work week than those who spend most of the weekend resting. However, researchers note that some rest is still necessary to avoid burnout.",
+      qs:[
+        {q:"What did the survey find about physical activity on weekends?", options:["It lowers energy during the week","It raises energy during the week","It has no effect"], a:1},
+        {q:"What caution do researchers add?", options:["Rest is unnecessary","Some rest is still needed","Exercise should be avoided"], a:1},
+        {q:"What is 'burnout' closest in meaning to?", options:["Extreme exhaustion","A type of injury","A weekend activity"], a:0}
+      ]},
+    {title:"Coffee Culture", text:"In many cities, coffee shops have become more than places to buy a drink. People use them as informal offices, meeting spots, and even quiet places to read. Some cafes now offer bookable desks and reliable Wi-Fi specifically to attract remote workers, while others limit laptop use during busy hours to keep tables free for customers who just want to chat.",
+      qs:[
+        {q:"What have coffee shops become for many people?", options:["Only a place to buy a drink","Informal offices and meeting spots","Places that ban conversation"], a:1},
+        {q:"Why do some cafes limit laptop use?", options:["To save electricity","To keep tables free during busy hours","Because Wi-Fi is too expensive"], a:1},
+        {q:"What do some cafes offer to attract remote workers?", options:["Bookable desks and Wi-Fi","Free haircuts","Weekly workshops"], a:0}
+      ]},
+    {title:"City Cycling", text:"More cities are adding protected bike lanes to encourage cycling instead of driving. Supporters say this reduces traffic and pollution, while critics argue it can slow down car traffic in already congested areas. Studies from several cities show that once a bike lane network is completed, cycling rates tend to rise significantly within a few years.",
+      qs:[
+        {q:"Why are cities adding protected bike lanes?", options:["To encourage cycling","To reduce the number of buses","To build more parking"], a:0},
+        {q:"What do critics say about bike lanes?", options:["They are too expensive to build","They can slow down car traffic","They are dangerous for cyclists"], a:1},
+        {q:"What happens after a bike lane network is completed, according to studies?", options:["Cycling rates tend to rise","Cycling rates stay the same","Cycling rates usually fall"], a:0}
+      ]},
+    {title:"Online Learning", text:"Online courses have made it possible for people to learn new skills without attending a physical classroom. While this flexibility suits busy adults with jobs and families, some learners find it harder to stay motivated without face-to-face contact with a teacher or classmates. Many platforms now add live discussion sessions to help students stay engaged.",
+      qs:[
+        {q:"What advantage does online learning offer?", options:["Flexibility for busy people","Guaranteed better grades","Free tuition"], a:0},
+        {q:"What challenge do some online learners face?", options:["Too much homework","Staying motivated without face-to-face contact","Lack of course options"], a:1},
+        {q:"What have many platforms added to help engagement?", options:["Live discussion sessions","Longer video lectures","Mandatory exams"], a:0}
+      ]}
+  ];
+
+  var LISTENING = [
+    {title:"Rescheduling a Call", transcript:"Hi, this is Sarah calling about the appointment tomorrow. I need to reschedule it to Friday afternoon, around 3 PM, if that works for you. Please call me back to confirm.",
+      qs:[
+        {q:"What does Sarah want to do?", options:["Cancel the appointment","Reschedule the appointment","Confirm the price"], a:1},
+        {q:"What new time does she suggest?", options:["Friday, 3 PM","Thursday, 3 PM","Friday, 3 AM"], a:0}
+      ]},
+    {title:"Weekend Plans", transcript:"This weekend I'm planning to go hiking with a few friends. We're leaving early on Saturday morning and we should be back by Sunday evening. If the weather is bad, we'll just stay in the city and watch a football match instead.",
+      qs:[
+        {q:"What is the main weekend plan?", options:["Going hiking","Watching a movie","Working overtime"], a:0},
+        {q:"What is the backup plan if the weather is bad?", options:["Stay home and sleep","Watch a football match in the city","Go hiking anyway"], a:1}
+      ]},
+    {title:"Guitar Lesson Reminder", transcript:"Don't forget your guitar lesson is moved to Wednesday this week instead of Tuesday, because the teacher is out of town. Please bring the new songbook, and try to practice the chords we learned last time before you come.",
+      qs:[
+        {q:"Why was the lesson moved?", options:["The student is busy","The teacher is out of town","The studio is closed"], a:1},
+        {q:"What should the student bring?", options:["A new guitar","The songbook","A recording device"], a:1}
+      ]},
+    {title:"Doctor's Appointment", transcript:"Good morning, this is the clinic calling to confirm your appointment with Dr. Tran on Monday at 9 AM. Please arrive fifteen minutes early to fill out some forms. If you can't make it, call us at least a day in advance to reschedule.",
+      qs:[
+        {q:"When is the appointment?", options:["Monday at 9 AM","Monday at 9 PM","Tuesday at 9 AM"], a:0},
+        {q:"What should the patient do before the appointment?", options:["Bring a friend","Arrive 15 minutes early","Skip breakfast"], a:1}
+      ]},
+    {title:"Job Interview Follow-up", transcript:"Thank you for coming in for an interview yesterday. We were impressed with your experience, and we'd like to invite you back for a second interview next Wednesday at 2 PM with our team lead. Please let us know if that time works for you.",
+      qs:[
+        {q:"What is this message about?", options:["Rejecting the candidate","Inviting the candidate to a second interview","Offering the job immediately"], a:1},
+        {q:"When is the next interview?", options:["Next Wednesday, 2 PM","Next Wednesday, 2 AM","Next Monday, 2 PM"], a:0}
+      ]},
+    {title:"Restaurant Reservation", transcript:"Hello, I'd like to reserve a table for four people this Saturday evening, around 7:30. We'd prefer a table near the window if possible. Also, one of us has a nut allergy, so please let the kitchen know.",
+      qs:[
+        {q:"How many people is the reservation for?", options:["Two","Four","Seven"], a:1},
+        {q:"What special request does the caller make?", options:["A table near the window","A private room","Free dessert"], a:0}
+      ]}
+  ];
+
+  var SPEAKING = [
+    {p:"I've already finished the report.", tip:"Chú ý âm cuối /t/ trong 'finished' và 'report' — người Việt hay bỏ mất âm cuối."},
+    {p:"She works at the hospital.", tip:"Nhớ thêm âm /s/ ở 'works' (động từ số ít ngôi thứ 3)."},
+    {p:"Could you get along with your new manager?", tip:"Nối âm: 'get along' đọc liền như một từ /ɡɛtəˈlɔŋ/."},
+    {p:"We had already left when they called.", tip:"Trọng âm rơi vào 'already' và 'left', 'had' đọc nhẹ, nhanh."},
+    {p:"I think practice is more important than talent.", tip:"Âm 'th' trong 'think' đặt lưỡi giữa hai hàm răng, không phát âm thành /t/."},
+    {p:"He's reluctant to change his routine.", tip:"Trọng âm từ 'reluctant' rơi vào âm tiết thứ hai: re-LUC-tant."},
+    {p:"Let's keep in touch after the trip.", tip:"Âm cuối /tʃ/ trong 'touch' phát rõ, môi tròn nhẹ."},
+    {p:"I ran out of time before the deadline.", tip:"Nối 'ran out of' liền mạch, không dừng giữa các từ."}
+  ];
+
+  var WRITE_PROMPTS = [
+    "Viết về sở thích chơi guitar hoặc bóng đá của bạn (3-4 câu).",
+    "Mô tả một ngày làm việc bình thường của bạn.",
+    "Viết về một mục tiêu bạn muốn đạt được trong năm nay.",
+    "Kể về lần gần nhất bạn học được điều gì đó mới.",
+    "Miêu tả kế hoạch cuối tuần của bạn."
+  ];
+
+  var SPELL_FIXES = {
+    "profectional":"professional","guitarlist":"guitarist","recieve":"receive","adress":"address",
+    "wich":"which","becuase":"because","untill":"until","begining":"beginning","seperate":"separate",
+    "definately":"definitely","enviroment":"environment","goverment":"government","occured":"occurred",
+    "peck":"peak (nếu bạn đang nói về đỉnh núi)","yrs":"years (tránh viết tắt kiểu nhắn tin trong bài viết trang trọng)"
+  };
+
+  var CHECKLIST = [
+    "Câu đầu tiên và chữ 'I' luôn viết hoa.",
+    "Kiểm tra thì: việc đã hoàn thành tính đến hiện tại → present perfect (have/has + P2).",
+    "Kiểm tra collocation: achieve a goal, nhưng reach/climb a peak.",
+    "Đọc to lại bài viết — nếu vấp ở đâu, có thể câu đó đang sai ngữ pháp.",
+    "Viết ít nhất 3-4 câu, có câu nối (and, but, because, so)."
+  ];
+
+  var CAMPS = [
+    {name:"Base Camp", min:0},
+    {name:"Camp 1", min:120},
+    {name:"Camp 2", min:300},
+    {name:"Camp 3", min:600},
+    {name:"Summit", min:1000}
+  ];
+
+  /* ============ STATE ============ */
+  var DEFAULT_STATE = {
+    xp:0, streak:0, lastActive:null,
+    vocabBox:{}, vocabSeenToday:0,
+    grammarDone:{}, grammarCorrectMap:{}, grammarCorrect:0, grammarTotal:0,
+    readingScore:{correct:0,total:0}, readingDone:{},
+    listeningScore:{correct:0,total:0}, listeningDone:{},
+    speakingRate:{}, speakingAccuracy:{},
+    writingEntries:[]
+  };
+  var state = load();
+
+  function load(){
+    try{
+      var raw = localStorage.getItem("basecampEnglishState");
+      if(!raw) return JSON.parse(JSON.stringify(DEFAULT_STATE));
+      var s = JSON.parse(raw);
+      for(var k in DEFAULT_STATE){ if(!(k in s)) s[k] = DEFAULT_STATE[k]; }
+      return s;
+    }catch(e){ return JSON.parse(JSON.stringify(DEFAULT_STATE)); }
+  }
+  var syncTimer = null;
+  function save(skipCloud){
+    state.updatedAt = Date.now();
+    localStorage.setItem("basecampEnglishState", JSON.stringify(state));
+    if(!skipCloud && auth.currentUser){
+      if(syncTimer) clearTimeout(syncTimer);
+      syncTimer = setTimeout(pushToCloud, 1200);
+    }
+  }
+  function addXp(n){ state.xp += n; save(); renderHeader(); }
+
+  /* ============ AUTH / SYNC ============ */
+  function setSyncStatus(text){
+    var el = document.getElementById("syncStatus");
+    if(el) el.textContent = text;
+  }
+  function pushToCloud(){
+    var user = auth.currentUser;
+    if(!user) return;
+    setSyncStatus("Đang đồng bộ...");
+    db.collection("users").doc(user.uid).set(state).then(function(){
+      setSyncStatus("Đã đồng bộ · " + new Date().toLocaleTimeString("vi-VN"));
+    }).catch(function(err){
+      console.error("pushToCloud failed", err);
+      setSyncStatus("Đồng bộ thất bại (" + (err && err.code ? err.code : "lỗi không rõ") + ") — sẽ tự thử lại.");
+    });
+  }
+  function renderAuthBar(){
+    var bar = document.getElementById("authBar");
+    if(!bar) return;
+    var user = auth.currentUser;
+    if(user){
+      bar.innerHTML =
+        (user.photoURL ? '<img class="auth-avatar" src="'+user.photoURL+'" referrerpolicy="no-referrer" alt="">' : '') +
+        '<span class="auth-name">'+(user.displayName || user.email || "")+'</span>' +
+        '<button class="signout-btn" id="signOutBtn" type="button">Đăng xuất</button>';
+      document.getElementById("signOutBtn").addEventListener("click", function(){ auth.signOut(); });
+    } else {
+      bar.innerHTML = '<button class="signin-btn" id="signInBtn" type="button">🔑 Đăng nhập Google để đồng bộ</button>';
+      document.getElementById("signInBtn").addEventListener("click", function(){
+        var provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider).catch(function(err){
+          setSyncStatus("Đăng nhập thất bại: " + (err && err.code ? err.code : "thử lại"));
+        });
+      });
+    }
+  }
+  auth.onAuthStateChanged(function(user){
+    renderAuthBar();
+    if(!user){
+      setSyncStatus("Chưa đăng nhập — tiến độ chỉ lưu trên máy này.");
+      return;
+    }
+    setSyncStatus("Đang đồng bộ...");
+    db.collection("users").doc(user.uid).get().then(function(doc){
+      if(doc.exists){
+        var cloud = doc.data();
+        var localUpdated = state.updatedAt || 0;
+        var cloudUpdated = cloud.updatedAt || 0;
+        if(cloudUpdated > localUpdated){
+          for(var k in DEFAULT_STATE){ if(!(k in cloud)) cloud[k] = DEFAULT_STATE[k]; }
+          state = cloud;
+          save(true);
+          refreshAllUI();
+        } else {
+          pushToCloud();
+        }
+      } else {
+        pushToCloud();
+      }
+      setSyncStatus("Đã đồng bộ · " + new Date().toLocaleTimeString("vi-VN"));
+    }).catch(function(err){
+      console.error("initial sync fetch failed", err);
+      setSyncStatus("Lỗi đồng bộ (" + (err && err.code ? err.code : "không rõ") + ") — vẫn dùng bình thường trên máy này.");
+    });
+  });
+
+  function todayStr(){ return new Date().toISOString().slice(0,10); }
+  function touchStreak(){
+    var today = todayStr();
+    if(state.lastActive === today) return;
+    var y = new Date(); y.setDate(y.getDate()-1);
+    var yStr = y.toISOString().slice(0,10);
+    state.streak = (state.lastActive === yStr) ? state.streak + 1 : 1;
+    state.lastActive = today;
+    save();
+  }
+
+  /* ============ HEADER / TRAIL ============ */
+  function renderHeader(){
+    document.getElementById("statXp").textContent = state.xp;
+    document.getElementById("statStreak").textContent = state.streak;
+    var camp = CAMPS[0];
+    for(var i=0;i<CAMPS.length;i++){ if(state.xp >= CAMPS[i].min) camp = CAMPS[i]; }
+    document.getElementById("statCamp").textContent = camp.name;
+
+    var nextIdx = CAMPS.indexOf(camp) + 1;
+    var pct;
+    if(nextIdx >= CAMPS.length){ pct = 100; }
+    else{
+      var span = CAMPS[nextIdx].min - camp.min;
+      pct = Math.min(100, Math.round(((state.xp - camp.min) / span) * 100));
+    }
+    document.getElementById("trailFill").style.width = pct + "%";
+
+    var campsEl = document.getElementById("trailCamps");
+    campsEl.innerHTML = "";
+    CAMPS.forEach(function(c){
+      var span = document.createElement("span");
+      span.className = "camp-mark" + (state.xp >= c.min ? " reached" : "");
+      span.textContent = c.name;
+      campsEl.appendChild(span);
+    });
+  }
+
+  /* ============ TABS ============ */
+  function showTab(tab){
+    document.querySelectorAll(".panel").forEach(function(p){ p.classList.remove("active"); });
+    document.querySelectorAll(".camp-tab").forEach(function(b){ b.classList.remove("active"); });
+    document.getElementById("panel-" + tab).classList.add("active");
+    document.querySelector('.camp-tab[data-tab="' + tab + '"]').classList.add("active");
+    if(tab === "dash") renderDashboard();
+    localStorage.setItem("basecampEnglishTab", tab);
+  }
+  document.getElementById("campNav").addEventListener("click", function(e){
+    var btn = e.target.closest(".camp-tab");
+    if(btn) showTab(btn.dataset.tab);
+  });
+
+  /* ============ THEME ============ */
+  var THEME_KEY = "basecampEnglishTheme";
+  function applyTheme(t){
+    if(t === "system"){ document.documentElement.removeAttribute("data-theme"); }
+    else{ document.documentElement.setAttribute("data-theme", t); }
+    document.getElementById("themeToggle").textContent = "Giao diện: " + (t === "system" ? "Hệ thống" : t === "dark" ? "Tối" : "Sáng");
+    localStorage.setItem(THEME_KEY, t);
+  }
+  document.getElementById("themeToggle").addEventListener("click", function(){
+    var cur = localStorage.getItem(THEME_KEY) || "system";
+    var next = cur === "system" ? "dark" : cur === "dark" ? "light" : "system";
+    applyTheme(next);
+  });
+  applyTheme(localStorage.getItem(THEME_KEY) || "system");
+
+  /* ============ DASHBOARD ============ */
+  function pct(correct,total){ return total ? Math.round((correct/total)*100) : 0; }
+  function vocabMastery(){
+    var boxes = Object.values(state.vocabBox);
+    if(!boxes.length) return 0;
+    var sum = boxes.reduce(function(a,b){return a+b;},0);
+    return Math.round((sum / (boxes.length*5)) * 100);
+  }
+  function writingMastery(){ return Math.min(100, state.writingEntries.length * 20); }
+
+  function renderDashboard(){
+    var scores = {
+      "Từ vựng": vocabMastery(),
+      "Ngữ pháp": pct(state.grammarCorrect, state.grammarTotal),
+      "Đọc hiểu": pct(state.readingScore.correct, state.readingScore.total),
+      "Nghe": pct(state.listeningScore.correct, state.listeningScore.total),
+      "Nói": speakingMastery(),
+      "Viết": writingMastery()
+    };
+    var list = document.getElementById("masteryList");
+    list.innerHTML = "";
+    Object.keys(scores).forEach(function(k){
+      var row = document.createElement("div");
+      row.className = "mastery-row";
+      row.innerHTML = '<div class="mastery-label">'+k+'</div><div class="mastery-bar"><div class="mastery-fill" style="width:'+scores[k]+'%"></div></div><div class="mastery-pct">'+scores[k]+'%</div>';
+      list.appendChild(row);
+    });
+
+    var weakest = Object.keys(scores).reduce(function(a,b){ return scores[a] <= scores[b] ? a : b; });
+    var tabMap = {"Từ vựng":"vocab","Ngữ pháp":"grammar","Đọc hiểu":"reading","Nghe":"listening","Nói":"speaking","Viết":"writing"};
+    document.getElementById("dashSuggestion").innerHTML =
+      "Kỹ năng đang yếu nhất của bạn là <b>" + weakest + "</b> (" + scores[weakest] + "%). " +
+      "Hãy dành 10-15 phút hôm nay cho mục <b>" + weakest + "</b> ở thanh điều hướng phía trên trước khi làm phần khác.";
+  }
+
+  function refreshAllUI(){
+    renderHeader();
+    renderDashboard();
+    initVocabSession();
+    renderGrammar();
+    currentPassage = 0; renderPassageList(); renderPassageBody();
+    currentListen = 0; renderListenList(); renderListenBody();
+    renderSpeaking();
+    currentPrompt = 0; renderWritePrompts(); renderWriteLog();
+    document.getElementById("writeArea").value = "";
+    document.getElementById("writeHints").innerHTML = "";
+  }
+  document.getElementById("resetBtn").addEventListener("click", function(){
+    if(confirm("Xoá toàn bộ tiến độ đã lưu? Hành động này không thể hoàn tác.")){
+      state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+      save();
+      refreshAllUI();
+    }
+  });
+
+  /* ============ EXPORT / IMPORT PROGRESS ============ */
+  document.getElementById("exportBtn").addEventListener("click", function(){
+    var blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    var stamp = new Date().toISOString().slice(0,10);
+    a.href = url;
+    a.download = "basecamp-progress-" + stamp + ".json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    document.getElementById("importStatus").textContent = "Đã xuất file tiến độ. Hãy lưu/di chuyển file vào thư mục Google Drive chứa app này để mang sang máy khác.";
+  });
+  document.getElementById("importBtn").addEventListener("click", function(){
+    document.getElementById("importFile").click();
+  });
+  document.getElementById("importFile").addEventListener("change", function(e){
+    var file = e.target.files && e.target.files[0];
+    if(!file) return;
+    var statusEl = document.getElementById("importStatus");
+    var reader = new FileReader();
+    reader.onload = function(){
+      try{
+        var incoming = JSON.parse(reader.result);
+        if(!incoming || typeof incoming !== "object") throw new Error("invalid");
+        for(var k in DEFAULT_STATE){ if(!(k in incoming)) incoming[k] = DEFAULT_STATE[k]; }
+        state = incoming;
+        save();
+        refreshAllUI();
+        statusEl.textContent = "Đã nhập tiến độ thành công — dữ liệu trên máy này giờ đã được cập nhật.";
+      }catch(err){
+        statusEl.textContent = "File không hợp lệ — hãy chọn đúng file .json đã xuất từ app này.";
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  });
+
+  /* ============ VOCAB (Leitner) ============ */
+  var vocabQueue = [], vocabIdx = 0, flipped = false;
+  function initVocabSession(){
+    var withBox = VOCAB.map(function(v,i){ return {v:v, i:i, box: state.vocabBox[i] || 1}; });
+    withBox.sort(function(a,b){ return a.box - b.box; });
+    vocabQueue = withBox.slice(0, 8);
+    vocabIdx = 0;
+    flipped = false;
+    renderFlashcard();
+  }
+  function renderFlashcard(){
+    if(vocabIdx >= vocabQueue.length){
+      document.getElementById("flashWord").textContent = "Hoàn thành phiên!";
+      document.getElementById("flashIpa").textContent = "Bạn đã ôn xong " + vocabQueue.length + " thẻ trong phiên này";
+      document.getElementById("vocabProgress").textContent = "Đã xong " + vocabQueue.length + " thẻ · bấm bên dưới để ôn tiếp";
+      document.getElementById("flashVi").textContent = "";
+      document.getElementById("flashEx").textContent = "";
+      document.getElementById("flashNote").textContent = "";
+      document.getElementById("vocabBtnRow").style.display = "none";
+      document.getElementById("vocabRestartRow").style.display = "flex";
+      return;
+    }
+    document.getElementById("vocabBtnRow").style.display = "flex";
+    document.getElementById("vocabRestartRow").style.display = "none";
+    var item = vocabQueue[vocabIdx];
+    document.getElementById("flashWord").textContent = item.v.en;
+    document.getElementById("flashIpa").textContent = item.v.ipa;
+    document.getElementById("flashVi").textContent = item.v.vi;
+    document.getElementById("flashEx").textContent = item.v.ex;
+    document.getElementById("flashNote").textContent = item.v.note;
+    document.getElementById("flashEmojiFront").textContent = item.v.emoji;
+    document.getElementById("flashEmojiBack").textContent = item.v.emoji;
+    document.getElementById("vocabProgress").innerHTML = "Thẻ " + (vocabIdx+1) + "/" + vocabQueue.length + " trong phiên · <span class='box-pill'>Box " + item.box + "/5</span>";
+    document.getElementById("flashInner").classList.remove("flipped");
+    flipped = false;
+  }
+  document.getElementById("flashcard").addEventListener("click", function(){
+    if(vocabIdx >= vocabQueue.length) return;
+    flipped = !flipped;
+    document.getElementById("flashInner").classList.toggle("flipped", flipped);
+  });
+  function vocabAnswer(knew){
+    if(vocabIdx >= vocabQueue.length) return;
+    var item = vocabQueue[vocabIdx];
+    var box = state.vocabBox[item.i] || 1;
+    box = knew ? Math.min(5, box+1) : 1;
+    state.vocabBox[item.i] = box;
+    addXp(knew ? 5 : 2);
+    vocabIdx++;
+    renderFlashcard();
+  }
+  document.getElementById("vocabKnew").addEventListener("click", function(){ vocabAnswer(true); });
+  document.getElementById("vocabForgot").addEventListener("click", function(){ vocabAnswer(false); });
+  document.getElementById("vocabRestart").addEventListener("click", function(){ initVocabSession(); });
+
+  /* ============ GRAMMAR ============ */
+  function renderGrammar(){
+    var wrap = document.getElementById("grammarList");
+    wrap.innerHTML = "";
+    GRAMMAR.forEach(function(item, idx){
+      var div = document.createElement("div");
+      div.className = "ex-item";
+      var promptHtml = item.p.replace("{blank}", "<code>______</code>");
+      var answered = !!state.grammarDone[idx];
+      var controlHtml = "";
+      if(item.type === "mcq"){
+        controlHtml = '<div class="mcq">' + item.options.map(function(opt,oi){
+          return '<label><input type="radio" name="g'+idx+'" value="'+oi+'"'+(answered?" disabled":"")+'> '+opt+'</label>';
+        }).join("") + '</div>';
+      } else {
+        controlHtml = '<input class="ex-input" type="text" id="ganswer'+idx+'" placeholder="Nhập câu trả lời..."'+(answered?" disabled":"")+'>';
+      }
+      var feedbackHtml;
+      if(answered){
+        var wasCorrect = !!state.grammarCorrectMap[idx];
+        feedbackHtml = '<div class="feedback show ' + (wasCorrect ? "correct" : "wrong") + '">' +
+          (wasCorrect ? "Chính xác! " : "Đáp án đúng: <b>" + item.ex + "</b>. ") +
+          '<span class="expl">' + item.expl + "</span></div>";
+      } else {
+        feedbackHtml = '<div class="feedback" id="gfeedback'+idx+'"></div>';
+      }
+      var btnRowHtml = answered
+        ? '<div class="btn-row"><button class="btn" data-redo="'+idx+'" type="button">Làm lại câu này</button></div>'
+        : '<div class="btn-row"><button class="btn btn-primary" data-check="'+idx+'" type="button">Kiểm tra</button></div>';
+      div.innerHTML =
+        '<div class="ex-prompt">'+(idx+1)+'. '+promptHtml+'</div>' +
+        controlHtml +
+        btnRowHtml +
+        feedbackHtml;
+      wrap.appendChild(div);
+    });
+    updateGrammarScore();
+    wrap.querySelectorAll("[data-check]").forEach(function(btn){
+      btn.addEventListener("click", function(){ checkGrammar(parseInt(btn.dataset.check,10)); });
+    });
+    wrap.querySelectorAll("[data-redo]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var idx = parseInt(btn.dataset.redo,10);
+        if(state.grammarCorrectMap[idx]) state.grammarCorrect = Math.max(0, state.grammarCorrect - 1);
+        state.grammarTotal = Math.max(0, state.grammarTotal - 1);
+        delete state.grammarDone[idx];
+        delete state.grammarCorrectMap[idx];
+        save();
+        renderGrammar();
+      });
+    });
+  }
+  function checkGrammar(idx){
+    if(state.grammarDone[idx]) return;
+    var item = GRAMMAR[idx];
+    var userVal, correct;
+    if(item.type === "mcq"){
+      var checked = document.querySelector('input[name="g'+idx+'"]:checked');
+      userVal = checked ? item.options[parseInt(checked.value,10)] : "";
+      correct = item.a.indexOf(userVal) !== -1;
+    } else {
+      userVal = (document.getElementById("ganswer"+idx).value || "").trim().toLowerCase();
+      correct = item.a.some(function(a){ return a.toLowerCase() === userVal; });
+    }
+    state.grammarDone[idx] = true;
+    state.grammarCorrectMap[idx] = correct;
+    state.grammarTotal += 1;
+    if(correct){ state.grammarCorrect += 1; addXp(8); } else { addXp(2); }
+    save();
+    var fb = document.getElementById("gfeedback"+idx);
+    fb.className = "feedback show " + (correct ? "correct" : "wrong");
+    fb.innerHTML = (correct ? "Chính xác! " : "Đáp án đúng: <b>" + item.ex + "</b>. ") + '<span class="expl">' + item.expl + "</span>";
+    var btn = document.querySelector('[data-check="'+idx+'"]');
+    btn.disabled = true;
+    btn.textContent = "Đã trả lời";
+    if(item.type === "mcq"){
+      document.querySelectorAll('input[name="g'+idx+'"]').forEach(function(r){ r.disabled = true; });
+    } else {
+      document.getElementById("ganswer"+idx).disabled = true;
+    }
+    updateGrammarScore();
+  }
+  function updateGrammarScore(){
+    document.getElementById("grammarScore").textContent = state.grammarCorrect + "/" + state.grammarTotal;
+  }
+
+  /* ============ READING ============ */
+  var currentPassage = 0;
+  function renderPassageList(){
+    var wrap = document.getElementById("passageList");
+    wrap.innerHTML = "";
+    READING.forEach(function(p,i){
+      var chip = document.createElement("button");
+      chip.className = "passage-chip" + (i===currentPassage ? " active" : "");
+      chip.textContent = p.title;
+      chip.addEventListener("click", function(){ currentPassage = i; renderPassageList(); renderPassageBody(); });
+      wrap.appendChild(chip);
+    });
+  }
+  function renderPassageBody(){
+    var p = READING[currentPassage];
+    var body = document.getElementById("passageBody");
+    var done = state.readingDone[currentPassage];
+    var qHtml = p.qs.map(function(q,qi){
+      var picked = done ? done.answers[qi] : -1;
+      return '<div class="ex-item"><div class="ex-prompt">'+(qi+1)+'. '+q.q+'</div>' +
+        '<div class="mcq">' + q.options.map(function(opt,oi){
+          var mark = done ? (oi === q.a ? " ✓" : (oi === picked ? " ✗" : "")) : "";
+          return '<label><input type="radio" name="r'+currentPassage+'q'+qi+'" value="'+oi+'"'+(oi===picked?" checked":"")+(done?" disabled":"")+'> '+opt+mark+'</label>';
+        }).join("") + '</div></div>';
+    }).join("");
+    var actionHtml;
+    if(done){
+      var nextHtml = currentPassage < READING.length - 1
+        ? '<button class="btn btn-primary" id="readingNext" type="button">Đoạn tiếp theo →</button>'
+        : '<button class="btn btn-primary" id="readingRestartAll" type="button">🔁 Đã xong hết — ôn lại từ đầu</button>';
+      actionHtml =
+        '<div class="feedback show ' + (done.correct === done.total ? "correct" : "wrong") + '">Bạn đúng ' + done.correct + '/' + done.total + ' câu.</div>' +
+        '<div class="btn-row"><button class="btn" id="readingRedo" type="button">Làm lại đoạn này</button>' + nextHtml + '</div>';
+    } else {
+      actionHtml =
+        '<div class="btn-row"><button class="btn btn-primary" id="readingSubmit" type="button">Nộp bài</button></div>' +
+        '<div class="feedback" id="readingFeedback"></div>';
+    }
+    body.innerHTML = '<div class="passage-text">'+p.text+'</div>' + qHtml + actionHtml;
+    if(done){
+      document.getElementById("readingRedo").addEventListener("click", function(){
+        delete state.readingDone[currentPassage]; save(); renderPassageBody();
+      });
+      var nextBtn = document.getElementById("readingNext");
+      if(nextBtn) nextBtn.addEventListener("click", function(){
+        currentPassage = Math.min(READING.length - 1, currentPassage + 1);
+        renderPassageList(); renderPassageBody();
+      });
+      var restartAllBtn = document.getElementById("readingRestartAll");
+      if(restartAllBtn) restartAllBtn.addEventListener("click", function(){
+        if(confirm("Làm lại toàn bộ các đoạn đọc từ đầu? Điểm cũ sẽ được ghi đè khi bạn nộp lại từng đoạn.")){
+          state.readingDone = {}; save();
+          currentPassage = 0; renderPassageList(); renderPassageBody();
+        }
+      });
+    } else {
+      document.getElementById("readingSubmit").addEventListener("click", function(){ submitReading(p); });
+    }
+  }
+  function submitReading(p){
+    var correct = 0, answers = [];
+    p.qs.forEach(function(q,qi){
+      var checked = document.querySelector('input[name="r'+currentPassage+'q'+qi+'"]:checked');
+      var val = checked ? parseInt(checked.value,10) : -1;
+      answers.push(val);
+      if(val === q.a) correct++;
+    });
+    state.readingScore.correct += correct;
+    state.readingScore.total += p.qs.length;
+    state.readingDone[currentPassage] = {correct:correct, total:p.qs.length, answers:answers};
+    addXp(correct * 6);
+    save();
+    renderPassageBody();
+  }
+
+  /* ============ LISTENING ============ */
+  var currentListen = 0;
+  function renderListenList(){
+    var wrap = document.getElementById("listenList");
+    wrap.innerHTML = "";
+    LISTENING.forEach(function(p,i){
+      var chip = document.createElement("button");
+      chip.className = "passage-chip" + (i===currentListen ? " active" : "");
+      chip.textContent = p.title;
+      chip.addEventListener("click", function(){ currentListen = i; renderListenList(); renderListenBody(); });
+      wrap.appendChild(chip);
+    });
+  }
+  /* ---- voice settings (shared by Listening & Speaking) ---- */
+  var VOICE_KEY_URI = "basecampVoiceURI";
+  var VOICE_KEY_RATE = "basecampVoiceRate";
+  var VOICE_KEY_PITCH = "basecampVoicePitch";
+  var voicesCache = [];
+
+  function scoreVoice(v){
+    var n = v.name.toLowerCase();
+    var s = 0;
+    if(/natural|online|neural|enhanced|premium/.test(n)) s += 10;
+    if(/google/.test(n)) s += 4;
+    if(/aria|jenny|guy|sara|libby|ryan|samantha|daniel|karen|moira|ava/.test(n)) s += 3;
+    if(v.lang === "en-US") s += 2;
+    if(/^en/i.test(v.lang)) s += 1;
+    if(v.localService === false) s += 1;
+    return s;
+  }
+  function getCurrentVoice(){
+    var uri = localStorage.getItem(VOICE_KEY_URI);
+    var found = voicesCache.filter(function(v){ return v.voiceURI === uri; });
+    return found[0] || null;
+  }
+  function populateVoices(){
+    if(!("speechSynthesis" in window)) return;
+    var all = window.speechSynthesis.getVoices();
+    var en = all.filter(function(v){ return /^en/i.test(v.lang); });
+    voicesCache = en.length ? en : all;
+    var sel = document.getElementById("voiceSelect");
+    if(!sel || !voicesCache.length) return;
+    sel.innerHTML = "";
+    voicesCache.forEach(function(v){
+      var opt = document.createElement("option");
+      opt.value = v.voiceURI;
+      opt.textContent = v.name + " (" + v.lang + ")";
+      sel.appendChild(opt);
+    });
+    var savedURI = localStorage.getItem(VOICE_KEY_URI);
+    var hasSaved = voicesCache.some(function(v){ return v.voiceURI === savedURI; });
+    if(!hasSaved){
+      var best = voicesCache.slice().sort(function(a,b){ return scoreVoice(b) - scoreVoice(a); })[0];
+      savedURI = best ? best.voiceURI : voicesCache[0].voiceURI;
+      localStorage.setItem(VOICE_KEY_URI, savedURI);
+    }
+    sel.value = savedURI;
+  }
+  function initVoicePanel(){
+    var sel = document.getElementById("voiceSelect");
+    var rateRange = document.getElementById("rateRange");
+    var pitchRange = document.getElementById("pitchRange");
+    if(!sel || !rateRange || !pitchRange) return;
+    rateRange.value = localStorage.getItem(VOICE_KEY_RATE) || "0.95";
+    pitchRange.value = localStorage.getItem(VOICE_KEY_PITCH) || "1.05";
+    document.getElementById("rateVal").textContent = rateRange.value + "x";
+    document.getElementById("pitchVal").textContent = pitchRange.value;
+    sel.addEventListener("change", function(){ localStorage.setItem(VOICE_KEY_URI, sel.value); });
+    rateRange.addEventListener("input", function(){
+      localStorage.setItem(VOICE_KEY_RATE, rateRange.value);
+      document.getElementById("rateVal").textContent = rateRange.value + "x";
+    });
+    pitchRange.addEventListener("input", function(){
+      localStorage.setItem(VOICE_KEY_PITCH, pitchRange.value);
+      document.getElementById("pitchVal").textContent = pitchRange.value;
+    });
+    document.getElementById("voiceTestBtn").addEventListener("click", function(){
+      speak("Hi! This is what the selected voice sounds like. Do you find it natural?");
+    });
+    if("speechSynthesis" in window){
+      populateVoices();
+      window.speechSynthesis.onvoiceschanged = populateVoices;
+    }
+  }
+
+  function speak(text){
+    if(!("speechSynthesis" in window)){
+      alert("Trình duyệt này không hỗ trợ đọc giọng nói. Hãy dùng phần transcript bên dưới.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    var baseRate = parseFloat(localStorage.getItem(VOICE_KEY_RATE) || "0.95");
+    var basePitch = parseFloat(localStorage.getItem(VOICE_KEY_PITCH) || "1.05");
+    var voice = getCurrentVoice();
+    var chunks = (text.match(/[^.!?]+[.!?]*/g) || [text]).map(function(c){ return c.trim(); }).filter(Boolean);
+    var i = 0;
+    function playNext(){
+      if(i >= chunks.length) return;
+      var chunk = chunks[i];
+      var u = new SpeechSynthesisUtterance(chunk);
+      u.lang = "en-US";
+      u.rate = baseRate;
+      var pitch = basePitch;
+      if(/\?\s*$/.test(chunk)) pitch += 0.12;
+      else if(/!\s*$/.test(chunk)) pitch += 0.08;
+      u.pitch = Math.max(0, Math.min(2, pitch));
+      if(voice) u.voice = voice;
+      u.onend = function(){ i++; setTimeout(playNext, 180); };
+      u.onerror = function(){ i++; playNext(); };
+      window.speechSynthesis.speak(u);
+    }
+    playNext();
+  }
+  function renderListenBody(){
+    var p = LISTENING[currentListen];
+    var body = document.getElementById("listenBody");
+    var done = state.listeningDone[currentListen];
+    var qHtml = p.qs.map(function(q,qi){
+      var picked = done ? done.answers[qi] : -1;
+      return '<div class="ex-item"><div class="ex-prompt">'+(qi+1)+'. '+q.q+'</div>' +
+        '<div class="mcq">' + q.options.map(function(opt,oi){
+          var mark = done ? (oi === q.a ? " ✓" : (oi === picked ? " ✗" : "")) : "";
+          return '<label><input type="radio" name="l'+currentListen+'q'+qi+'" value="'+oi+'"'+(oi===picked?" checked":"")+(done?" disabled":"")+'> '+opt+mark+'</label>';
+        }).join("") + '</div></div>';
+    }).join("");
+    var actionHtml;
+    if(done){
+      var nextHtml = currentListen < LISTENING.length - 1
+        ? '<button class="btn btn-primary" id="listenNext" type="button">Đoạn tiếp theo →</button>'
+        : '<button class="btn btn-primary" id="listenRestartAll" type="button">🔁 Đã xong hết — ôn lại từ đầu</button>';
+      actionHtml =
+        '<div class="feedback show ' + (done.correct === done.total ? "correct" : "wrong") + '">Bạn đúng ' + done.correct + '/' + done.total + ' câu.</div>' +
+        '<div class="btn-row"><button class="btn" id="listenRedo" type="button">Nghe lại đoạn này</button>' + nextHtml + '</div>';
+    } else {
+      actionHtml =
+        '<div class="btn-row"><button class="btn btn-primary" id="listenSubmit" type="button">Nộp bài</button></div>' +
+        '<div class="feedback" id="listenFeedback"></div>';
+    }
+    body.innerHTML =
+      '<button class="play-btn" id="listenPlay" type="button">▶ Nghe đoạn hội thoại</button>' +
+      '<button class="btn btn-ghost transcript-toggle" id="listenToggle" type="button">Hiện transcript</button>' +
+      '<div class="transcript-box" id="listenTranscript">'+p.transcript+'</div>' +
+      qHtml + actionHtml;
+    document.getElementById("listenPlay").addEventListener("click", function(){ speak(p.transcript); });
+    document.getElementById("listenToggle").addEventListener("click", function(){
+      document.getElementById("listenTranscript").classList.toggle("show");
+    });
+    if(done){
+      document.getElementById("listenRedo").addEventListener("click", function(){
+        delete state.listeningDone[currentListen]; save(); renderListenBody();
+      });
+      var nextBtn = document.getElementById("listenNext");
+      if(nextBtn) nextBtn.addEventListener("click", function(){
+        currentListen = Math.min(LISTENING.length - 1, currentListen + 1);
+        renderListenList(); renderListenBody();
+      });
+      var restartAllBtn = document.getElementById("listenRestartAll");
+      if(restartAllBtn) restartAllBtn.addEventListener("click", function(){
+        if(confirm("Làm lại toàn bộ các bài nghe từ đầu? Điểm cũ sẽ được ghi đè khi bạn nộp lại từng bài.")){
+          state.listeningDone = {}; save();
+          currentListen = 0; renderListenList(); renderListenBody();
+        }
+      });
+    } else {
+      document.getElementById("listenSubmit").addEventListener("click", function(){ submitListening(p); });
+    }
+  }
+  function submitListening(p){
+    var correct = 0, answers = [];
+    p.qs.forEach(function(q,qi){
+      var checked = document.querySelector('input[name="l'+currentListen+'q'+qi+'"]:checked');
+      var val = checked ? parseInt(checked.value,10) : -1;
+      answers.push(val);
+      if(val === q.a) correct++;
+    });
+    state.listeningScore.correct += correct;
+    state.listeningScore.total += p.qs.length;
+    state.listeningDone[currentListen] = {correct:correct, total:p.qs.length, answers:answers};
+    addXp(correct * 6);
+    save();
+    renderListenBody();
+  }
+
+  /* ============ SPEAKING ============ */
+  var SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+  var activeRecognition = null;
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function tokenizeSpeech(s){ return (s||"").toLowerCase().replace(/[^a-z0-9' ]/g," ").split(/\s+/).filter(Boolean); }
+  function scoreSpeech(target, heard){
+    var t = tokenizeSpeech(target), h = tokenizeSpeech(heard);
+    var n = t.length, m = h.length;
+    var dp = [];
+    for(var i=0;i<=n;i++){ dp.push(new Array(m+1).fill(0)); }
+    for(i=1;i<=n;i++){
+      for(var j=1;j<=m;j++){
+        dp[i][j] = (t[i-1]===h[j-1]) ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j], dp[i][j-1]);
+      }
+    }
+    var matched = new Array(n).fill(false);
+    i=n; var j=m;
+    while(i>0 && j>0){
+      if(t[i-1]===h[j-1]){ matched[i-1]=true; i--; j--; }
+      else if(dp[i-1][j] >= dp[i][j-1]) i--;
+      else j--;
+    }
+    var accuracy = n ? Math.round((dp[n][m]/n)*100) : 0;
+    var originalWords = target.split(/\s+/);
+    var html = originalWords.map(function(w,idx2){
+      var isMatch = !!matched[idx2];
+      return '<span class="stt-word '+(isMatch?"match":"miss")+'">'+escapeHtml(w)+'</span>';
+    }).join(" ");
+    return {accuracy:accuracy, html:html};
+  }
+  function renderSttResultHtml(rec){
+    var cls = rec.accuracy>=85 ? "good" : rec.accuracy<60 ? "bad" : "";
+    return '<div class="stt-status">Điểm tốt nhất: <span class="stt-score '+cls+'">'+rec.accuracy+'%</span></div>' +
+      '<div class="stt-target">'+rec.html+'</div>' +
+      '<div class="stt-heard">Bạn đã nói: "'+escapeHtml(rec.heard)+'"</div>';
+  }
+  function renderSttPanel(idx){
+    var panel = document.getElementById("sttPanel"+idx);
+    if(!panel) return;
+    if(!SpeechRecognitionCtor){
+      panel.innerHTML = '<div class="stt-unsupported">Trình duyệt này chưa hỗ trợ nhận diện giọng nói — hãy dùng Chrome hoặc Edge trên máy tính để dùng tính năng chấm phát âm.</div>';
+      return;
+    }
+    var rec = state.speakingAccuracy[idx];
+    if(!rec){
+      panel.innerHTML = '<div class="stt-status">Bấm "🎤 Ghi âm &amp; kiểm tra" rồi đọc to câu trên — hệ thống sẽ so khớp với câu mẫu.</div>';
+      return;
+    }
+    panel.innerHTML = renderSttResultHtml(rec);
+  }
+  function startRecording(idx){
+    if(!SpeechRecognitionCtor || activeRecognition) return;
+    var target = SPEAKING[idx].p;
+    var btn = document.querySelector('[data-record="'+idx+'"]');
+    var panel = document.getElementById("sttPanel"+idx);
+    var rec = new SpeechRecognitionCtor();
+    rec.lang = "en-US";
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+    activeRecognition = rec;
+    btn.disabled = true;
+    btn.textContent = "🎙️ Đang nghe...";
+    panel.innerHTML = '<div class="stt-status">🎙️ Đang nghe — hãy đọc to câu trên ngay bây giờ...</div>';
+    rec.onresult = function(e){
+      var heard = e.results[0][0].transcript;
+      var scored = scoreSpeech(target, heard);
+      var prevBest = state.speakingAccuracy[idx];
+      if(!prevBest || scored.accuracy > prevBest.accuracy){
+        state.speakingAccuracy[idx] = {accuracy:scored.accuracy, heard:heard, html:scored.html};
+      } else {
+        state.speakingAccuracy[idx] = {accuracy:prevBest.accuracy, heard:heard, html:scored.html};
+      }
+      save();
+      addXp(Math.max(1, Math.round(scored.accuracy/15)));
+      renderSttPanel(idx);
+    };
+    rec.onerror = function(e){
+      var msg = "Không nhận diện được giọng nói — thử lại nhé.";
+      if(e.error === "not-allowed" || e.error === "service-not-allowed") msg = "Trình duyệt chưa được cấp quyền micro. Hãy cho phép truy cập micro rồi thử lại.";
+      else if(e.error === "no-speech") msg = "Không nghe thấy gì — thử nói to và rõ hơn.";
+      else if(e.error === "network") msg = "Lỗi mạng khi nhận diện giọng nói — tính năng này cần kết nối internet.";
+      panel.innerHTML = '<div class="stt-status" style="color:var(--summit);">'+msg+'</div>';
+    };
+    rec.onend = function(){
+      activeRecognition = null;
+      btn.disabled = false;
+      btn.textContent = "🎤 Ghi âm & kiểm tra";
+    };
+    try{ rec.start(); }
+    catch(err){
+      activeRecognition = null;
+      btn.disabled = false;
+      btn.textContent = "🎤 Ghi âm & kiểm tra";
+    }
+  }
+  function speakingMastery(){
+    var total = SPEAKING.length, sum = 0, answered = 0;
+    for(var idx=0; idx<total; idx++){
+      var acc = state.speakingAccuracy[idx];
+      var rate = state.speakingRate[idx];
+      if(acc){ sum += acc.accuracy; answered++; }
+      else if(rate){ sum += (rate==="easy"?100:rate==="medium"?60:30); answered++; }
+    }
+    return answered ? Math.round(sum/answered) : 0;
+  }
+  function renderSpeaking(){
+    var wrap = document.getElementById("speakList");
+    wrap.innerHTML = "";
+    SPEAKING.forEach(function(item, idx){
+      var div = document.createElement("div");
+      div.className = "speak-item";
+      var rated = state.speakingRate[idx];
+      div.innerHTML =
+        '<div><div class="speak-phrase">"'+item.p+'"</div><div class="speak-tip">'+item.tip+'</div>' +
+        '<div class="stt-panel" id="sttPanel'+idx+'"></div></div>' +
+        '<div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end;">' +
+        '<div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">' +
+          '<button class="btn" data-speak="'+idx+'" type="button">▶ Nghe mẫu</button>' +
+          '<button class="btn btn-primary" data-record="'+idx+'" type="button">🎤 Ghi âm &amp; kiểm tra</button>' +
+        '</div>' +
+        '<div class="rate-row">' +
+          '<button class="rate-btn'+(rated==="hard"?" picked":"")+'" data-rate="hard" data-idx="'+idx+'" type="button">Khó</button>' +
+          '<button class="rate-btn'+(rated==="medium"?" picked":"")+'" data-rate="medium" data-idx="'+idx+'" type="button">Vừa</button>' +
+          '<button class="rate-btn'+(rated==="easy"?" picked":"")+'" data-rate="easy" data-idx="'+idx+'" type="button">Dễ</button>' +
+        '</div></div>';
+      wrap.appendChild(div);
+      renderSttPanel(idx);
+    });
+    wrap.querySelectorAll("[data-speak]").forEach(function(btn){
+      btn.addEventListener("click", function(){ speak(SPEAKING[parseInt(btn.dataset.speak,10)].p); });
+    });
+    wrap.querySelectorAll("[data-record]").forEach(function(btn){
+      btn.addEventListener("click", function(){ startRecording(parseInt(btn.dataset.record,10)); });
+    });
+    wrap.querySelectorAll("[data-rate]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var idx = btn.dataset.idx;
+        if(!state.speakingRate[idx]) addXp(4);
+        state.speakingRate[idx] = btn.dataset.rate;
+        save();
+        renderSpeaking();
+      });
+    });
+  }
+
+  /* ============ WRITING ============ */
+  var currentPrompt = 0;
+  function renderWritePrompts(){
+    var wrap = document.getElementById("writePromptList");
+    wrap.innerHTML = "";
+    WRITE_PROMPTS.forEach(function(p,i){
+      var chip = document.createElement("button");
+      chip.className = "passage-chip" + (i===currentPrompt ? " active" : "");
+      chip.textContent = "Đề " + (i+1);
+      chip.title = p;
+      chip.addEventListener("click", function(){
+        var ta = document.getElementById("writeArea");
+        if(ta.value.trim() && !confirm("Chuyển đề sẽ xoá nội dung đang viết dở (chưa lưu). Tiếp tục?")) return;
+        currentPrompt = i;
+        renderWritePrompts();
+        ta.value = "";
+        document.getElementById("writeHints").innerHTML = "";
+      });
+      wrap.appendChild(chip);
+    });
+  }
+  function renderChecklist(){
+    var ul = document.getElementById("writeChecklist");
+    ul.innerHTML = CHECKLIST.map(function(c){ return "<li>"+c+"</li>"; }).join("");
+  }
+  function renderWriteLog(){
+    var log = document.getElementById("writeLog");
+    if(!state.writingEntries.length){ log.innerHTML = ""; return; }
+    log.innerHTML = "<h2 style='font-size:15px;'>Bài đã lưu</h2>" + state.writingEntries.slice().reverse().map(function(e){
+      return '<div class="entry"><div class="meta">'+e.date+' · Đề: '+e.prompt+'</div>'+e.text.replace(/</g,"&lt;")+'</div>';
+    }).join("");
+  }
+  document.getElementById("writeCheckBtn").addEventListener("click", function(){
+    var text = document.getElementById("writeArea").value;
+    var hints = [];
+    if(!text.trim()){ hints.push("Bạn chưa viết gì cả — hãy thử viết ít nhất 3 câu."); }
+    else{
+      var words = text.trim().split(/\s+/);
+      if(words.length < 12) hints.push("Bài hơi ngắn ("+words.length+" từ) — cố viết ít nhất 3-4 câu đầy đủ.");
+      if(/(^|\.\s+)i\b/.test(text) || /\bi\b/.test(text.replace(/'/g,""))){
+        if(/\bi\b/.test(text)) hints.push("Chữ 'I' (tôi) luôn viết hoa, kể cả ở giữa câu.");
+      }
+      var sentences = text.split(/(?<=[.!?])\s+/);
+      sentences.forEach(function(s){
+        var t = s.trim();
+        if(t && /^[a-z]/.test(t)) hints.push("Câu bắt đầu bằng chữ thường: \""+t.slice(0,25)+(t.length>25?"...":"")+"\" — nhớ viết hoa đầu câu.");
+      });
+      var lower = text.toLowerCase();
+      Object.keys(SPELL_FIXES).forEach(function(bad){
+        if(lower.indexOf(bad) !== -1) hints.push("'"+bad+"' có thể là lỗi chính tả — có phải bạn muốn viết '"+SPELL_FIXES[bad]+"'?");
+      });
+      if(/\byrs\b/i.test(text)) hints.push("Tránh viết tắt kiểu nhắn tin (yrs) trong bài viết — dùng 'years'.");
+    }
+    if(!hints.length) hints.push("Không phát hiện lỗi cơ bản nào! Giờ hãy tự đối chiếu với checklist bên dưới để kiểm tra thì và collocation.");
+    document.getElementById("writeHints").innerHTML = hints.map(function(h){ return "<li>"+h+"</li>"; }).join("");
+    addXp(3);
+  });
+  document.getElementById("writeSaveBtn").addEventListener("click", function(){
+    var text = document.getElementById("writeArea").value.trim();
+    if(!text) return;
+    state.writingEntries.push({date:new Date().toLocaleDateString("vi-VN"), prompt:"Đề "+(currentPrompt+1), text:text});
+    addXp(10);
+    save();
+    document.getElementById("writeArea").value = "";
+    document.getElementById("writeHints").innerHTML = "";
+    renderWriteLog();
+  });
+
+  /* ============ INIT ============ */
+  touchStreak();
+  renderHeader();
+  renderDashboard();
+  initVocabSession();
+  renderGrammar();
+  renderPassageList(); renderPassageBody();
+  initVoicePanel();
+  renderListenList(); renderListenBody();
+  renderSpeaking();
+  renderWritePrompts(); renderChecklist(); renderWriteLog();
+
+  var savedTab = localStorage.getItem("basecampEnglishTab") || "dash";
+  showTab(savedTab);
+})();
+</script>
