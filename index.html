@@ -191,10 +191,10 @@
   /* flashcard */
   .flash-wrap{display:flex; flex-direction:column; align-items:center; gap:14px;}
   .flashcard{
-    width:100%; max-width:420px; min-height:190px; perspective:1200px; cursor:pointer;
+    width:100%; max-width:420px; min-height:320px; perspective:1200px; cursor:pointer;
   }
   .flash-inner{
-    position:relative; width:100%; height:100%; min-height:190px; text-align:center;
+    position:relative; width:100%; height:100%; min-height:320px; text-align:center;
     transition:transform .5s; transform-style:preserve-3d;
     border:1px solid var(--line); border-radius:6px; background:var(--bg-elevated);
   }
@@ -208,11 +208,11 @@
   .flash-ipa{font-family:var(--font-mono); color:var(--ink-faint); font-size:13.5px; margin-top:4px;}
   .flash-hint{position:absolute; bottom:10px; font-size:11px; color:var(--ink-faint);}
   .flash-icon{
-    width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    background:color-mix(in srgb, var(--alpine) 16%, var(--bg-elevated)); border:1px solid var(--line-strong);
-    margin-bottom:10px; flex-shrink:0; font-size:28px; line-height:1;
+    width:112px; height:112px; border-radius:20px; display:flex; align-items:center; justify-content:center;
+    overflow:hidden; box-shadow:var(--shadow); margin-bottom:12px; flex-shrink:0;
   }
-  .flash-back .flash-icon{width:38px; height:38px; margin:0 0 6px; font-size:19px;}
+  .flash-icon svg{width:100%; height:100%; display:block;}
+  .flash-back .flash-icon{width:46px; height:46px; border-radius:10px; margin:0 0 6px;}
   .flash-back .row{margin-bottom:8px; font-size:14px;}
   .flash-back .row b{display:block; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:2px; font-weight:700;}
   .progress-line{font-size:12.5px; color:var(--ink-faint); font-family:var(--font-mono);}
@@ -334,6 +334,291 @@
   }
 </style>
 
+<svg style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
+<defs>
+
+<symbol id="scene-goal" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-goal-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3c2a12"/><stop offset="100%" stop-color="#c1601f"/></linearGradient>
+  <linearGradient id="g-goal-cup" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffe58a"/><stop offset="100%" stop-color="#e0a520"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-goal-bg)"/>
+  <circle cx="80" cy="55" r="42" fill="#ffb238" opacity="0.35"/>
+  <polygon points="45,142 115,142 106,150 54,150" fill="#7a4a12"/>
+  <rect x="66" y="118" width="28" height="24" fill="#e0a520"/>
+  <path d="M50,60 h60 l-6,40 a24,24 0 0,1 -48,0 Z" fill="url(#g-goal-cup)"/>
+  <path d="M50,64 c-16,0 -18,26 2,30" fill="none" stroke="#e0a520" stroke-width="6"/>
+  <path d="M110,64 c16,0 18,26 -2,30" fill="none" stroke="#e0a520" stroke-width="6"/>
+  <polygon points="80,34 84,44 95,44 86,51 89,62 80,55 71,62 74,51 65,44 76,44" fill="#fff7d6"/>
+  <circle cx="34" cy="34" r="4" fill="#ffe58a"/><circle cx="130" cy="42" r="3" fill="#ff8a4c"/>
+  <circle cx="120" cy="98" r="3" fill="#fff7d6"/><circle cx="24" cy="100" r="4" fill="#ff8a4c"/>
+  <rect x="106" y="30" width="6" height="6" fill="#ffe58a" transform="rotate(20 109 33)"/>
+  <rect x="26" y="70" width="5" height="5" fill="#ff8a4c" transform="rotate(-15 28 72)"/>
+</symbol>
+
+<symbol id="scene-peak" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-peak-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1c2f47"/><stop offset="100%" stop-color="#f0a352"/></linearGradient>
+  <linearGradient id="g-peak-m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7cad93"/><stop offset="100%" stop-color="#2e5842"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-peak-sky)"/>
+  <circle cx="120" cy="34" r="16" fill="#ffe58a" opacity="0.85"/>
+  <polygon points="-5,150 45,55 75,95 110,30 165,150" fill="url(#g-peak-m1)"/>
+  <polygon points="45,55 58,78 32,78" fill="#fff"/>
+  <polygon points="110,30 126,58 94,58" fill="#fff"/>
+  <circle cx="110" cy="24" r="3.4" fill="#1d2b38"/>
+  <line x1="110" y1="27" x2="110" y2="36" stroke="#1d2b38" stroke-width="2.4"/>
+  <line x1="110" y1="30" x2="103" y2="36" stroke="#1d2b38" stroke-width="2.4"/>
+  <line x1="110" y1="30" x2="118" y2="35" stroke="#1d2b38" stroke-width="2.4"/>
+  <line x1="110" y1="27" x2="110" y2="4" stroke="#3c2a12" stroke-width="2.6"/>
+  <polygon points="110,4 150,15 110,28" fill="#c1601f"/>
+  <circle cx="136" cy="20" r="2.4" fill="#fff7d6"/><circle cx="145" cy="26" r="1.8" fill="#fff7d6"/>
+</symbol>
+
+<symbol id="scene-getalong" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-along-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2b3f34"/><stop offset="100%" stop-color="#3c6b52"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-along-bg)"/>
+  <circle cx="48" cy="60" r="14" fill="#f0a352"/>
+  <polygon points="24,120 72,120 68,80 28,80" fill="#c1601f"/>
+  <line x1="60" y1="90" x2="88" y2="72" stroke="#f0a352" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="112" cy="60" r="14" fill="#7cad93"/>
+  <polygon points="88,120 136,120 132,80 92,80" fill="#3c6b52"/>
+  <line x1="100" y1="90" x2="72" y2="72" stroke="#7cad93" stroke-width="9" stroke-linecap="round"/>
+  <polygon points="80,66 86,74 80,82 74,74" fill="#fff7d6"/>
+  <polygon points="60,36 66,48 78,48 68,55 72,67 60,60 48,67 52,55 42,48 54,48" fill="#e6835f"/>
+  <polygon points="112,30 116,38 124,38 118,43 120,51 112,46 104,51 106,43 100,38 108,38" fill="#e6835f"/>
+</symbol>
+
+<symbol id="scene-reluctant" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-rel-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3a1f1a"/><stop offset="100%" stop-color="#a13a26"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-rel-bg)"/>
+  <rect x="118" y="40" width="14" height="90" rx="3" fill="#5b342a"/>
+  <circle cx="60" cy="60" r="13" fill="#f0a352"/>
+  <polygon points="42,120 82,120 78,84 46,84" fill="#e6835f"/>
+  <line x1="82" y1="95" x2="120" y2="82" stroke="#3a1f1a" stroke-width="4"/>
+  <path d="M60,140 q-30,-6 -34,-30" fill="none" stroke="#e6835f" stroke-width="9" stroke-linecap="round"/>
+  <path d="M82,140 q22,-8 24,-30" fill="none" stroke="#e6835f" stroke-width="9" stroke-linecap="round"/>
+  <line x1="20" y1="60" x2="34" y2="66" stroke="#f6b06a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="18" y1="76" x2="33" y2="78" stroke="#f6b06a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="24" y1="92" x2="37" y2="90" stroke="#f6b06a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="70" cy="52" r="3" fill="#fff7d6"/>
+</symbol>
+
+<symbol id="scene-forwardto" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-fwd-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2b1f45"/><stop offset="100%" stop-color="#f0a352"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-fwd-bg)"/>
+  <circle cx="118" cy="46" r="20" fill="#ffe58a"/>
+  <circle cx="60" cy="70" r="13" fill="#7cad93"/>
+  <polygon points="44,132 76,132 72,96 48,96" fill="#3c6b52"/>
+  <line x1="60" y1="96" x2="60" y2="86" stroke="#3c6b52" stroke-width="6"/>
+  <line x1="48" y1="128" x2="40" y2="140" stroke="#7cad93" stroke-width="8" stroke-linecap="round"/>
+  <line x1="72" y1="128" x2="80" y2="140" stroke="#7cad93" stroke-width="8" stroke-linecap="round"/>
+  <line x1="70" y1="60" x2="100" y2="50" stroke="#fff7d6" stroke-width="3" stroke-dasharray="2 5"/>
+  <circle cx="98" cy="90" r="3" fill="#fff7d6"/><circle cx="112" cy="78" r="2.4" fill="#ffe58a"/>
+  <circle cx="128" cy="98" r="2.4" fill="#fff7d6"/>
+</symbol>
+
+<symbol id="scene-incharge" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-chg-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2b2210"/><stop offset="100%" stop-color="#e0a520"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-chg-bg)"/>
+  <polygon points="120,40 160,60 160,40" fill="#fff7d6" opacity="0.18"/>
+  <rect x="38" y="112" width="34" height="24" fill="#7a4a12"/>
+  <rect x="76" y="122" width="30" height="14" fill="#5b342a"/>
+  <circle cx="80" cy="62" r="15" fill="#f0a352"/>
+  <polygon points="58,128 102,128 97,86 63,86" fill="#1d2b38"/>
+  <rect x="70" y="88" width="20" height="26" fill="#fdfaf1"/>
+  <line x1="74" y1="96" x2="86" y2="96" stroke="#8b9198" stroke-width="2"/>
+  <line x1="74" y1="102" x2="86" y2="102" stroke="#8b9198" stroke-width="2"/>
+  <polygon points="60,50 80,32 100,50 92,50 92,44 68,44 68,50" fill="#ffe58a"/>
+  <circle cx="68" cy="40" r="3" fill="#ffe58a"/><circle cx="80" cy="34" r="3.4" fill="#ffe58a"/><circle cx="92" cy="40" r="3" fill="#ffe58a"/>
+</symbol>
+
+<symbol id="scene-decision" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-dec-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#241a3a"/><stop offset="100%" stop-color="#3c6b52"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-dec-bg)"/>
+  <line x1="80" y1="150" x2="80" y2="96" stroke="#c2a56c" stroke-width="8" stroke-linecap="round"/>
+  <line x1="80" y1="96" x2="42" y2="46" stroke="#f0a352" stroke-width="8" stroke-linecap="round"/>
+  <line x1="80" y1="96" x2="118" y2="46" stroke="#7cad93" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="42,46 50,54 34,58" fill="#f0a352"/>
+  <polygon points="118,46 126,58 110,54" fill="#7cad93"/>
+  <circle cx="80" cy="112" r="12" fill="#f0a352"/>
+  <polygon points="66,152 94,152 90,126 70,126" fill="#e6835f"/>
+  <polygon points="80,132 84,140 92,140 86,146 88,154 80,150 72,154 74,146 68,140 76,140" fill="#fff7d6"/>
+</symbol>
+
+<symbol id="scene-takeplace" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-tp-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2b1f45"/><stop offset="100%" stop-color="#a13a26"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-tp-bg)"/>
+  <ellipse cx="80" cy="140" rx="50" ry="10" fill="#1d2b38" opacity="0.4"/>
+  <path d="M80,20 C55,20 40,40 40,62 C40,96 80,138 80,138 C80,138 120,96 120,62 C120,40 105,20 80,20 Z" fill="#e6835f"/>
+  <circle cx="80" cy="62" r="18" fill="#fff7d6"/>
+  <circle cx="80" cy="62" r="9" fill="#a13a26"/>
+  <rect x="26" y="30" width="5" height="5" fill="#ffe58a" transform="rotate(30 28 32)"/>
+  <rect x="130" y="40" width="6" height="6" fill="#f0a352" transform="rotate(-20 133 43)"/>
+  <circle cx="34" cy="70" r="3" fill="#fff7d6"/><circle cx="128" cy="90" r="3.4" fill="#ffe58a"/>
+  <rect x="120" y="20" width="5" height="5" fill="#fff7d6" transform="rotate(10 122 22)"/>
+</symbol>
+
+<symbol id="scene-runout" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-ro-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3a1f1a"/><stop offset="100%" stop-color="#5b342a"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-ro-bg)"/>
+  <rect x="24" y="52" width="96" height="56" rx="6" fill="none" stroke="#e6835f" stroke-width="6"/>
+  <rect x="120" y="70" width="14" height="20" rx="2" fill="#e6835f"/>
+  <rect x="26" y="54" width="10" height="52" fill="#a13a26"/>
+  <path d="M40,80 h60 l-14,-16 h-16 l-8,10 h-10 z" fill="none" stroke="#c1601f" stroke-width="0"/>
+  <polygon points="70,58 46,86 62,86 54,100 82,72 66,72" fill="#c1601f" opacity="0.5"/>
+  <text x="80" y="120" font-family="ui-monospace,monospace" font-size="22" fill="#e6835f" text-anchor="middle" font-weight="700">0%</text>
+  <circle cx="80" cy="132" r="3" fill="#e6835f"/>
+  <path d="M80,138 q-4,6 0,10 q4,-4 0,-10" fill="#e6835f"/>
+</symbol>
+
+<symbol id="scene-comeup" viewBox="0 0 160 160">
+  <defs><radialGradient id="g-cu-glow" cx="50%" cy="35%" r="60%"><stop offset="0%" stop-color="#ffe58a"/><stop offset="100%" stop-color="#c1601f"/></radialGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-cu-glow)"/>
+  <circle cx="80" cy="66" r="30" fill="#fff7d6"/>
+  <path d="M64,92 h32 v10 a16,16 0 0,1 -32,0 Z" fill="#e0a520"/>
+  <rect x="66" y="104" width="28" height="8" fill="#7a4a12"/>
+  <line x1="80" y1="20" x2="80" y2="8" stroke="#fff7d6" stroke-width="5" stroke-linecap="round"/>
+  <line x1="50" y1="30" x2="42" y2="20" stroke="#fff7d6" stroke-width="5" stroke-linecap="round"/>
+  <line x1="110" y1="30" x2="118" y2="20" stroke="#fff7d6" stroke-width="5" stroke-linecap="round"/>
+  <line x1="32" y1="60" x2="18" y2="58" stroke="#fff7d6" stroke-width="5" stroke-linecap="round"/>
+  <line x1="128" y1="60" x2="142" y2="58" stroke="#fff7d6" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="80" cy="66" r="9" fill="#ffb238"/>
+</symbol>
+
+<symbol id="scene-giveup" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-gu-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1c2f47"/><stop offset="100%" stop-color="#54636f"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-gu-bg)"/>
+  <polygon points="10,150 150,150 130,110 30,110" fill="#2e3d4a"/>
+  <line x1="40" y1="112" x2="52" y2="52" stroke="#8b9198" stroke-width="6" stroke-linecap="round"/>
+  <path d="M52,52 q18,4 20,16 q-18,6 -22,-2 Z" fill="#e0e4e6"/>
+  <circle cx="96" cy="86" r="12" fill="#f0a352"/>
+  <path d="M82,140 q0,-22 14,-24 q14,2 14,24 Z" fill="#e6835f"/>
+  <path d="M78,140 q10,10 36,0" fill="none" stroke="#e6835f" stroke-width="0"/>
+  <line x1="80" y1="98" x2="70" y2="112" stroke="#f0a352" stroke-width="8" stroke-linecap="round"/>
+  <line x1="112" y1="98" x2="122" y2="112" stroke="#f0a352" stroke-width="8" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="scene-figureout" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-fo-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#241a3a"/><stop offset="100%" stop-color="#3c6b52"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-fo-bg)"/>
+  <circle cx="66" cy="64" r="34" fill="none" stroke="#f0a352" stroke-width="9"/>
+  <circle cx="66" cy="64" r="34" fill="#fff7d6" opacity="0.12"/>
+  <line x1="90" y1="88" x2="128" y2="126" stroke="#f0a352" stroke-width="12" stroke-linecap="round"/>
+  <path d="M50,52 h20 v14 h-8 v10 h-8 v-10 h-8 a4,4 0 0,1 0,-8 h4 a4,4 0 0,0 0,-6 Z" fill="#ffe58a"/>
+  <circle cx="30" cy="112" r="3" fill="#fff7d6"/><circle cx="120" cy="40" r="3.4" fill="#7cad93"/>
+</symbol>
+
+<symbol id="scene-purpose" viewBox="0 0 160 160">
+  <defs><radialGradient id="g-pur-bg" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#5b342a"/><stop offset="100%" stop-color="#2b1f16"/></radialGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-pur-bg)"/>
+  <circle cx="80" cy="80" r="52" fill="#fdfaf1"/>
+  <circle cx="80" cy="80" r="38" fill="#e6835f"/>
+  <circle cx="80" cy="80" r="24" fill="#fdfaf1"/>
+  <circle cx="80" cy="80" r="10" fill="#a13a26"/>
+  <line x1="10" y1="150" x2="70" y2="90" stroke="#3c2a12" stroke-width="4"/>
+  <polygon points="76,86 84,84 88,92" fill="#c1601f"/>
+  <polygon points="4,156 22,148 12,138" fill="#c1601f"/>
+  <line x1="12" y1="148" x2="20" y2="140" stroke="#e0a520" stroke-width="3"/>
+</symbol>
+
+<symbol id="scene-accident" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-acc-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2b1f45"/><stop offset="100%" stop-color="#e0a520"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-acc-bg)"/>
+  <ellipse cx="60" cy="132" rx="30" ry="7" fill="#1d2b38" opacity="0.35"/>
+  <path d="M40,120 q0,-30 20,-30 q20,0 20,30 Z" fill="#7cad93" opacity="0.85"/>
+  <ellipse cx="60" cy="90" rx="20" ry="7" fill="#a9d4bc"/>
+  <g transform="rotate(18 112 54)">
+    <rect x="94" y="36" width="36" height="36" rx="7" fill="#fdfaf1"/>
+    <circle cx="104" cy="46" r="3" fill="#1d2b38"/><circle cx="120" cy="46" r="3" fill="#1d2b38"/>
+    <circle cx="104" cy="62" r="3" fill="#1d2b38"/><circle cx="120" cy="62" r="3" fill="#1d2b38"/>
+    <circle cx="112" cy="54" r="3" fill="#1d2b38"/>
+  </g>
+  <g transform="rotate(-12 46 30)">
+    <rect x="30" y="14" width="30" height="30" rx="6" fill="#f0a352"/>
+    <circle cx="38" cy="22" r="2.6" fill="#3a1f1a"/><circle cx="52" cy="22" r="2.6" fill="#3a1f1a"/>
+    <circle cx="45" cy="36" r="2.6" fill="#3a1f1a"/>
+  </g>
+  <line x1="86" y1="20" x2="94" y2="28" stroke="#fff7d6" stroke-width="3"/>
+  <line x1="94" y1="20" x2="86" y2="28" stroke="#fff7d6" stroke-width="3"/>
+</symbol>
+
+<symbol id="scene-touch" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-tc-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1c2f47"/><stop offset="100%" stop-color="#3c6b52"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-tc-bg)"/>
+  <rect x="18" y="50" width="34" height="54" rx="8" fill="#f0a352"/>
+  <rect x="24" y="58" width="22" height="34" fill="#fff7d6"/>
+  <rect x="108" y="70" width="34" height="54" rx="8" fill="#7cad93"/>
+  <rect x="114" y="78" width="22" height="34" fill="#fff7d6"/>
+  <path d="M52,66 C75,50 95,90 108,90" fill="none" stroke="#ffe58a" stroke-width="4" stroke-dasharray="3 7" stroke-linecap="round"/>
+  <path d="M74,44 c-8,0 -8,10 0,14 c8,-4 8,-14 0,-14 Z" fill="#e6835f" transform="scale(1.3) translate(4 4)"/>
+  <circle cx="90" cy="42" r="3" fill="#fff7d6"/><circle cx="100" cy="52" r="2.4" fill="#ffe58a"/>
+</symbol>
+
+<symbol id="scene-progress" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-pg-bg" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#241a3a"/><stop offset="100%" stop-color="#7cad93"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-pg-bg)"/>
+  <rect x="14" y="126" width="26" height="20" fill="#3c6b52"/>
+  <rect x="42" y="106" width="26" height="40" fill="#4d7d5f"/>
+  <rect x="70" y="84" width="26" height="62" fill="#5f8e6c"/>
+  <rect x="98" y="60" width="26" height="86" fill="#7cad93"/>
+  <circle cx="127" cy="44" r="12" fill="#f0a352"/>
+  <polygon points="112,86 133,66 128,76 138,76" fill="#e6835f"/>
+  <line x1="112" y1="86" x2="98" y2="100" stroke="#f0a352" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="140" cy="30" r="3" fill="#ffe58a"/><circle cx="150" cy="46" r="2.4" fill="#fff7d6"/>
+</symbol>
+
+<symbol id="scene-usedto" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-ut-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1c2f47"/><stop offset="100%" stop-color="#241a3a"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-ut-bg)"/>
+  <path d="M30,80 a50,50 0 1,1 15,35" fill="none" stroke="#f0a352" stroke-width="9" stroke-linecap="round"/>
+  <polygon points="30,80 24,58 46,66" fill="#f0a352"/>
+  <circle cx="82" cy="80" r="16" fill="#7cad93"/>
+  <polygon points="62,142 102,142 98,102 66,102" fill="#3c6b52"/>
+  <circle cx="76" cy="77" r="1.8" fill="#1d2b38"/><circle cx="88" cy="77" r="1.8" fill="#1d2b38"/>
+  <path d="M76,86 q6,4 12,0" fill="none" stroke="#1d2b38" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="scene-pointout" viewBox="0 0 160 160">
+  <defs><radialGradient id="g-po-glow" cx="70%" cy="45%" r="55%"><stop offset="0%" stop-color="#ffe58a"/><stop offset="100%" stop-color="#a13a26"/></radialGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-po-glow)"/>
+  <circle cx="112" cy="66" r="26" fill="none" stroke="#fdfaf1" stroke-width="5" stroke-dasharray="6 6"/>
+  <circle cx="112" cy="66" r="9" fill="#fdfaf1"/>
+  <path d="M20,120 C30,90 46,80 60,84 L92,66 L100,78 L70,98 C78,112 72,130 50,132 C30,134 14,128 20,120 Z" fill="#f0a352"/>
+  <rect x="14" y="112" width="20" height="26" rx="8" fill="#e6835f"/>
+</symbol>
+
+<symbol id="scene-putoff" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-pf-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3a1f1a"/><stop offset="100%" stop-color="#5b342a"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-pf-bg)"/>
+  <circle cx="70" cy="80" r="42" fill="#fdfaf1"/>
+  <circle cx="70" cy="80" r="42" fill="none" stroke="#e0a520" stroke-width="6"/>
+  <line x1="70" y1="80" x2="70" y2="52" stroke="#1d2b38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="70" y1="80" x2="92" y2="88" stroke="#a13a26" stroke-width="5" stroke-linecap="round"/>
+  <rect x="60" y="30" width="6" height="12" fill="#5b342a"/><rect x="74" y="30" width="6" height="12" fill="#5b342a"/>
+  <rect x="122" y="70" width="26" height="20" rx="3" fill="#e6835f" transform="rotate(18 135 80)"/>
+  <rect x="128" y="94" width="24" height="18" rx="3" fill="#f0a352" transform="rotate(28 140 103)"/>
+  <line x1="98" y1="86" x2="118" y2="80" stroke="#fff7d6" stroke-width="3" stroke-dasharray="2 5"/>
+</symbol>
+
+<symbol id="scene-catchup" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-cup-bg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1c2f47"/><stop offset="100%" stop-color="#f0a352"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-cup-bg)"/>
+  <circle cx="120" cy="46" r="11" fill="#7cad93"/>
+  <polygon points="106,100 132,100 129,70 109,70" fill="#3c6b52"/>
+  <line x1="132" y1="80" x2="146" y2="72" stroke="#7cad93" stroke-width="7" stroke-linecap="round"/>
+  <line x1="106" y1="80" x2="94" y2="90" stroke="#7cad93" stroke-width="7" stroke-linecap="round"/>
+  <line x1="126" y1="100" x2="136" y2="122" stroke="#3c6b52" stroke-width="7" stroke-linecap="round"/>
+  <line x1="112" y1="100" x2="106" y2="124" stroke="#3c6b52" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="40" cy="70" r="11" fill="#f0a352"/>
+  <polygon points="26,124 52,124 49,94 29,94" fill="#e6835f"/>
+  <line x1="52" y1="104" x2="66" y2="98" stroke="#f0a352" stroke-width="7" stroke-linecap="round"/>
+  <line x1="26" y1="104" x2="14" y2="112" stroke="#f0a352" stroke-width="7" stroke-linecap="round"/>
+  <line x1="46" y1="124" x2="56" y2="146" stroke="#e6835f" stroke-width="7" stroke-linecap="round"/>
+  <line x1="32" y1="124" x2="26" y2="148" stroke="#e6835f" stroke-width="7" stroke-linecap="round"/>
+  <line x1="10" y1="80" x2="22" y2="78" stroke="#ffe58a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="6" y1="92" x2="20" y2="92" stroke="#ffe58a" stroke-width="3" stroke-linecap="round"/>
+</symbol>
+
+</defs>
+</svg>
+
 <div class="shell">
 
   <header class="trailhead">
@@ -405,13 +690,13 @@
         <div class="flashcard" id="flashcard">
           <div class="flash-inner" id="flashInner">
             <div class="flash-face flash-front">
-              <div class="flash-icon" id="flashEmojiFront">🏆</div>
+              <div class="flash-icon"><svg><use id="flashIconFront" href="#scene-goal"></use></svg></div>
               <div class="flash-word" id="flashWord">word</div>
               <div class="flash-ipa" id="flashIpa">/wɜːd/</div>
               <div class="flash-hint">bấm để lật thẻ</div>
             </div>
             <div class="flash-face flash-back">
-              <div class="flash-icon" id="flashEmojiBack">🏆</div>
+              <div class="flash-icon"><svg><use id="flashIconBack" href="#scene-goal"></use></svg></div>
               <div class="row"><b>Nghĩa</b><span id="flashVi"></span></div>
               <div class="row"><b>Ví dụ</b><span id="flashEx"></span></div>
               <div class="row"><b>Lưu ý</b><span id="flashNote"></span></div>
@@ -531,26 +816,26 @@
 
   /* ============ CONTENT ============ */
   var VOCAB = [
-    {en:"achieve a goal", ipa:"/əˈtʃiːv/", vi:"đạt được mục tiêu", ex:"She achieved her goal of running a marathon.", note:"Không dùng 'achieve' cho núi — xem thẻ 'reach a peak'.", emoji:"🏆"},
-    {en:"reach / climb a peak", ipa:"/riːtʃ/ /klaɪm/", vi:"chinh phục một đỉnh núi", ex:"They finally reached the peak after six hours.", note:"Collocation đúng thay cho 'achieve a peak'.", emoji:"🏔️"},
-    {en:"get along with sb", ipa:"/ɡet əˈlɔːŋ wɪð/", vi:"hòa hợp, hợp nhau với ai đó", ex:"I get along well with my new colleagues.", note:"KHÔNG có nghĩa 'đi cùng ai đó'.", emoji:"🤝"},
-    {en:"reluctant (to do sth)", ipa:"/rɪˈlʌktənt/", vi:"miễn cưỡng, không muốn", ex:"He was reluctant to sign the contract.", note:"Luôn đi với 'to V'.", emoji:"😬"},
-    {en:"look forward to sth", ipa:"/lʊk ˈfɔːwəd tuː/", vi:"mong chờ điều gì", ex:"I'm looking forward to the weekend.", note:"'to' ở đây là giới từ → theo sau là V-ing/danh từ, không phải V nguyên mẫu.", emoji:"🤩"},
-    {en:"in charge of sth", ipa:"/ɪn tʃɑːdʒ əv/", vi:"phụ trách, chịu trách nhiệm về", ex:"She is in charge of the marketing team.", note:"Không dùng 'in charge for'.", emoji:"🧑‍💼"},
-    {en:"make a decision", ipa:"/meɪk ə dɪˈsɪʒn/", vi:"đưa ra quyết định", ex:"We need to make a decision by Friday.", note:"Dùng 'make', không dùng 'do a decision'.", emoji:"🤔"},
-    {en:"take place", ipa:"/teɪk pleɪs/", vi:"diễn ra, xảy ra", ex:"The wedding took place in a small church.", note:"Không cần giới từ trước 'place' ở đây.", emoji:"📍"},
-    {en:"run out of sth", ipa:"/rʌn aʊt əv/", vi:"hết, cạn kiệt thứ gì", ex:"We ran out of milk this morning.", note:"Chủ ngữ là người/nơi hết đồ, không phải đồ vật.", emoji:"🪫"},
-    {en:"come up with sth", ipa:"/kʌm ʌp wɪð/", vi:"nghĩ ra, đề xuất", ex:"He came up with a great idea.", note:"Cụm động từ 3 thành phần, không tách rời.", emoji:"💡"},
-    {en:"give up (on sth)", ipa:"/ɡɪv ʌp/", vi:"từ bỏ", ex:"Don't give up on your dream.", note:"Có thể tách: give it up.", emoji:"🏳️"},
-    {en:"figure sth out", ipa:"/ˈfɪɡə aʊt/", vi:"tìm ra, hiểu ra", ex:"I finally figured out the problem.", note:"Cụm động từ có thể tách.", emoji:"🧩"},
-    {en:"on purpose", ipa:"/ɒn ˈpɜːpəs/", vi:"cố ý", ex:"He didn't break it on purpose.", note:"Trái nghĩa với 'by accident'.", emoji:"🎯"},
-    {en:"by accident", ipa:"/baɪ ˈæksɪdənt/", vi:"vô tình, tình cờ", ex:"I found the file by accident.", note:"Trái nghĩa với 'on purpose'.", emoji:"🎲"},
-    {en:"keep in touch", ipa:"/kiːp ɪn tʌtʃ/", vi:"giữ liên lạc", ex:"Let's keep in touch after graduation.", note:"Không dùng 'keep contact'.", emoji:"📞"},
-    {en:"make progress", ipa:"/meɪk ˈprəʊɡres/", vi:"tiến bộ", ex:"You've made a lot of progress this month.", note:"'progress' không đếm được, không có 'a progress'.", emoji:"📈"},
-    {en:"get used to sth", ipa:"/ɡet juːzd tuː/", vi:"quen dần với điều gì", ex:"I'm getting used to the new schedule.", note:"Khác với 'used to + V' (đã từng làm gì trong quá khứ).", emoji:"🔄"},
-    {en:"point sth out", ipa:"/pɔɪnt aʊt/", vi:"chỉ ra, nêu ra", ex:"She pointed out a mistake in the report.", note:"Cụm động từ có thể tách.", emoji:"👉"},
-    {en:"put sth off", ipa:"/pʊt ɒf/", vi:"trì hoãn", ex:"Stop putting off your homework.", note:"Đồng nghĩa với 'postpone'.", emoji:"😴"},
-    {en:"catch up on sth", ipa:"/kætʃ ʌp ɒn/", vi:"bắt kịp, làm bù việc còn dang dở", ex:"I need to catch up on sleep this weekend.", note:"Thường đi với sleep, work, news.", emoji:"🏃"}
+    {en:"achieve a goal", ipa:"/əˈtʃiːv/", vi:"đạt được mục tiêu", ex:"She achieved her goal of running a marathon.", note:"Không dùng 'achieve' cho núi — xem thẻ 'reach a peak'.", icon:"goal"},
+    {en:"reach / climb a peak", ipa:"/riːtʃ/ /klaɪm/", vi:"chinh phục một đỉnh núi", ex:"They finally reached the peak after six hours.", note:"Collocation đúng thay cho 'achieve a peak'.", icon:"peak"},
+    {en:"get along with sb", ipa:"/ɡet əˈlɔːŋ wɪð/", vi:"hòa hợp, hợp nhau với ai đó", ex:"I get along well with my new colleagues.", note:"KHÔNG có nghĩa 'đi cùng ai đó'.", icon:"getalong"},
+    {en:"reluctant (to do sth)", ipa:"/rɪˈlʌktənt/", vi:"miễn cưỡng, không muốn", ex:"He was reluctant to sign the contract.", note:"Luôn đi với 'to V'.", icon:"reluctant"},
+    {en:"look forward to sth", ipa:"/lʊk ˈfɔːwəd tuː/", vi:"mong chờ điều gì", ex:"I'm looking forward to the weekend.", note:"'to' ở đây là giới từ → theo sau là V-ing/danh từ, không phải V nguyên mẫu.", icon:"forwardto"},
+    {en:"in charge of sth", ipa:"/ɪn tʃɑːdʒ əv/", vi:"phụ trách, chịu trách nhiệm về", ex:"She is in charge of the marketing team.", note:"Không dùng 'in charge for'.", icon:"incharge"},
+    {en:"make a decision", ipa:"/meɪk ə dɪˈsɪʒn/", vi:"đưa ra quyết định", ex:"We need to make a decision by Friday.", note:"Dùng 'make', không dùng 'do a decision'.", icon:"decision"},
+    {en:"take place", ipa:"/teɪk pleɪs/", vi:"diễn ra, xảy ra", ex:"The wedding took place in a small church.", note:"Không cần giới từ trước 'place' ở đây.", icon:"takeplace"},
+    {en:"run out of sth", ipa:"/rʌn aʊt əv/", vi:"hết, cạn kiệt thứ gì", ex:"We ran out of milk this morning.", note:"Chủ ngữ là người/nơi hết đồ, không phải đồ vật.", icon:"runout"},
+    {en:"come up with sth", ipa:"/kʌm ʌp wɪð/", vi:"nghĩ ra, đề xuất", ex:"He came up with a great idea.", note:"Cụm động từ 3 thành phần, không tách rời.", icon:"comeup"},
+    {en:"give up (on sth)", ipa:"/ɡɪv ʌp/", vi:"từ bỏ", ex:"Don't give up on your dream.", note:"Có thể tách: give it up.", icon:"giveup"},
+    {en:"figure sth out", ipa:"/ˈfɪɡə aʊt/", vi:"tìm ra, hiểu ra", ex:"I finally figured out the problem.", note:"Cụm động từ có thể tách.", icon:"figureout"},
+    {en:"on purpose", ipa:"/ɒn ˈpɜːpəs/", vi:"cố ý", ex:"He didn't break it on purpose.", note:"Trái nghĩa với 'by accident'.", icon:"purpose"},
+    {en:"by accident", ipa:"/baɪ ˈæksɪdənt/", vi:"vô tình, tình cờ", ex:"I found the file by accident.", note:"Trái nghĩa với 'on purpose'.", icon:"accident"},
+    {en:"keep in touch", ipa:"/kiːp ɪn tʌtʃ/", vi:"giữ liên lạc", ex:"Let's keep in touch after graduation.", note:"Không dùng 'keep contact'.", icon:"touch"},
+    {en:"make progress", ipa:"/meɪk ˈprəʊɡres/", vi:"tiến bộ", ex:"You've made a lot of progress this month.", note:"'progress' không đếm được, không có 'a progress'.", icon:"progress"},
+    {en:"get used to sth", ipa:"/ɡet juːzd tuː/", vi:"quen dần với điều gì", ex:"I'm getting used to the new schedule.", note:"Khác với 'used to + V' (đã từng làm gì trong quá khứ).", icon:"usedto"},
+    {en:"point sth out", ipa:"/pɔɪnt aʊt/", vi:"chỉ ra, nêu ra", ex:"She pointed out a mistake in the report.", note:"Cụm động từ có thể tách.", icon:"pointout"},
+    {en:"put sth off", ipa:"/pʊt ɒf/", vi:"trì hoãn", ex:"Stop putting off your homework.", note:"Đồng nghĩa với 'postpone'.", icon:"putoff"},
+    {en:"catch up on sth", ipa:"/kætʃ ʌp ɒn/", vi:"bắt kịp, làm bù việc còn dang dở", ex:"I need to catch up on sleep this weekend.", note:"Thường đi với sleep, work, news.", icon:"catchup"}
   ];
 
   var GRAMMAR = [
@@ -953,8 +1238,8 @@
     document.getElementById("flashVi").textContent = item.v.vi;
     document.getElementById("flashEx").textContent = item.v.ex;
     document.getElementById("flashNote").textContent = item.v.note;
-    document.getElementById("flashEmojiFront").textContent = item.v.emoji;
-    document.getElementById("flashEmojiBack").textContent = item.v.emoji;
+    document.getElementById("flashIconFront").setAttribute("href", "#scene-" + item.v.icon);
+    document.getElementById("flashIconBack").setAttribute("href", "#scene-" + item.v.icon);
     document.getElementById("vocabProgress").innerHTML = "Thẻ " + (vocabIdx+1) + "/" + vocabQueue.length + " trong phiên · <span class='box-pill'>Box " + item.box + "/5</span>";
     document.getElementById("flashInner").classList.remove("flipped");
     flipped = false;
