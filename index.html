@@ -17,6 +17,8 @@
     --alpine-ink:#eef7f1;
     --summit:#a13a26;
     --summit-ink:#fdf0ec;
+    --easy:#2e6a8e;
+    --easy-ink:#eaf3f8;
     --line:#d9c69f;
     --line-strong:#c2a56c;
     --shadow:0 1px 2px rgba(29,43,56,.10), 0 6px 16px -10px rgba(29,43,56,.25);
@@ -31,6 +33,7 @@
       --accent:#ef9c4c; --accent-strong:#f6b06a; --accent-ink:#241203;
       --alpine:#7cad93; --alpine-ink:#0e1c15;
       --summit:#e6835f; --summit-ink:#2a0f08;
+      --easy:#6fa8c9; --easy-ink:#0b1f28;
       --line:#2c3f50; --line-strong:#3c5468;
       --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 20px -12px rgba(0,0,0,.6);
     }
@@ -41,6 +44,7 @@
     --accent:#ef9c4c; --accent-strong:#f6b06a; --accent-ink:#241203;
     --alpine:#7cad93; --alpine-ink:#0e1c15;
     --summit:#e6835f; --summit-ink:#2a0f08;
+    --easy:#6fa8c9; --easy-ink:#0b1f28;
     --line:#2c3f50; --line-strong:#3c5468;
     --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 20px -12px rgba(0,0,0,.6);
   }
@@ -50,6 +54,7 @@
     --accent:#c1601f; --accent-strong:#a24e18; --accent-ink:#fffaf2;
     --alpine:#3c6b52; --alpine-ink:#eef7f1;
     --summit:#a13a26; --summit-ink:#fdf0ec;
+    --easy:#2e6a8e; --easy-ink:#eaf3f8;
     --line:#d9c69f; --line-strong:#c2a56c;
     --shadow:0 1px 2px rgba(29,43,56,.10), 0 6px 16px -10px rgba(29,43,56,.25);
   }
@@ -217,6 +222,22 @@
   .flash-back .row b{display:block; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:2px; font-weight:700;}
   .progress-line{font-size:12.5px; color:var(--ink-faint); font-family:var(--font-mono);}
   .box-pill{display:inline-block; padding:1px 8px; border-radius:999px; background:var(--bg-sunk); border:1px solid var(--line); font-size:11px; font-family:var(--font-mono);}
+  .due-pill{display:inline-block; padding:2px 9px; border-radius:999px; font-size:11.5px; font-family:var(--font-mono); margin-right:6px;}
+  .due-pill.due{background:color-mix(in srgb, var(--summit) 18%, var(--bg-card)); color:var(--summit); border:1px solid var(--summit);}
+  .due-pill.new{background:color-mix(in srgb, var(--easy) 18%, var(--bg-card)); color:var(--easy); border:1px solid var(--easy);}
+
+  .srs-row{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; width:100%; max-width:420px;}
+  .srs-btn{
+    display:flex; flex-direction:column; align-items:center; gap:2px; border:none; border-radius:4px;
+    padding:10px 4px; cursor:pointer; color:#fff; font-weight:600;
+  }
+  .srs-label{font-size:13px;}
+  .srs-sub{font-size:10.5px; font-family:var(--font-mono); opacity:.85; font-weight:500;}
+  .srs-again{background:var(--summit);}
+  .srs-hard{background:var(--accent);}
+  .srs-good{background:var(--alpine);}
+  .srs-easy{background:var(--easy);}
+  .srs-btn:hover{filter:brightness(1.08);}
 
   /* exercises */
   .ex-item{border-top:1px solid var(--line); padding:16px 0;}
@@ -616,6 +637,81 @@
   <line x1="6" y1="92" x2="20" y2="92" stroke="#ffe58a" stroke-width="3" stroke-linecap="round"/>
 </symbol>
 
+<symbol id="scene-cat-work" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-cw-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2b2210"/><stop offset="100%" stop-color="#c1601f"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-cw-bg)"/>
+  <rect x="34" y="70" width="92" height="60" rx="8" fill="#ffe58a"/>
+  <rect x="34" y="70" width="92" height="20" fill="#e0a520"/>
+  <path d="M62,70 v-14 a10,10 0 0,1 10,-10 h16 a10,10 0 0,1 10,10 v14" fill="none" stroke="#5b342a" stroke-width="7"/>
+  <rect x="70" y="94" width="20" height="14" rx="2" fill="#5b342a"/>
+  <circle cx="128" cy="36" r="3" fill="#fff7d6"/><circle cx="24" cy="112" r="3" fill="#fff7d6"/>
+</symbol>
+
+<symbol id="scene-cat-emotion" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-ce-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3a1f1a"/><stop offset="100%" stop-color="#e6835f"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-ce-bg)"/>
+  <circle cx="80" cy="78" r="46" fill="#ffe58a"/>
+  <circle cx="64" cy="70" r="6" fill="#3a1f1a"/><circle cx="96" cy="70" r="6" fill="#3a1f1a"/>
+  <path d="M58,92 q22,20 44,0" fill="none" stroke="#3a1f1a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M120,40 c-8,0 -8,10 0,14 c8,-4 8,-14 0,-14 Z" fill="#e6835f" transform="translate(0 -2)"/>
+  <circle cx="34" cy="46" r="3" fill="#fff7d6"/><circle cx="130" cy="110" r="3" fill="#fff7d6"/>
+</symbol>
+
+<symbol id="scene-cat-time" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-ct-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1c2f47"/><stop offset="100%" stop-color="#3c6b52"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-ct-bg)"/>
+  <circle cx="80" cy="84" r="48" fill="#fdfaf1"/>
+  <circle cx="80" cy="84" r="48" fill="none" stroke="#e0a520" stroke-width="7"/>
+  <line x1="80" y1="84" x2="80" y2="52" stroke="#1d2b38" stroke-width="6" stroke-linecap="round"/>
+  <line x1="80" y1="84" x2="104" y2="94" stroke="#a13a26" stroke-width="6" stroke-linecap="round"/>
+  <rect x="70" y="24" width="6" height="14" fill="#5b342a"/><rect x="84" y="24" width="6" height="14" fill="#5b342a"/>
+  <circle cx="80" cy="84" r="4" fill="#1d2b38"/>
+</symbol>
+
+<symbol id="scene-cat-travel" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-ctr-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1c2f47"/><stop offset="100%" stop-color="#f0a352"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-ctr-bg)"/>
+  <ellipse cx="60" cy="64" rx="26" ry="9" fill="#fdfaf1" opacity="0.85"/>
+  <ellipse cx="100" cy="46" rx="18" ry="7" fill="#fdfaf1" opacity="0.7"/>
+  <polygon points="40,120 130,120 108,96 76,96 62,108 44,108" fill="#fdfaf1"/>
+  <polygon points="76,96 108,96 96,74 84,74" fill="#e6835f"/>
+  <circle cx="60" cy="120" r="7" fill="#3c6b52"/><circle cx="110" cy="120" r="7" fill="#3c6b52"/>
+  <line x1="20" y1="130" x2="140" y2="130" stroke="#fff7d6" stroke-width="3" stroke-dasharray="4 6"/>
+</symbol>
+
+<symbol id="scene-cat-food" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-cf-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3a1f1a"/><stop offset="100%" stop-color="#c1601f"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-cf-bg)"/>
+  <circle cx="80" cy="86" r="46" fill="#fdfaf1"/>
+  <circle cx="80" cy="86" r="30" fill="none" stroke="#e0a520" stroke-width="4"/>
+  <rect x="36" y="40" width="6" height="34" fill="#5b342a"/>
+  <rect x="30" y="40" width="4" height="16" fill="#5b342a"/><rect x="38" y="40" width="4" height="16" fill="#5b342a"/><rect x="46" y="40" width="4" height="16" fill="#5b342a"/>
+  <path d="M118,40 v34 M112,40 c0,10 6,10 6,18 M124,40 c0,10 -6,10 -6,18" fill="none" stroke="#5b342a" stroke-width="5" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="scene-cat-phrasal" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-cp-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#241a3a"/><stop offset="100%" stop-color="#7cad93"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-cp-bg)"/>
+  <path d="M36,100 a44,44 0 1,1 20,32" fill="none" stroke="#ffe58a" stroke-width="10" stroke-linecap="round"/>
+  <polygon points="56,132 40,140 48,116" fill="#ffe58a"/>
+  <circle cx="112" cy="60" r="4" fill="#fff7d6"/><circle cx="124" cy="80" r="3" fill="#fff7d6"/>
+</symbol>
+
+<symbol id="scene-cat-adjective" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-ca-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3c2a12"/><stop offset="100%" stop-color="#e0a520"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-ca-bg)"/>
+  <polygon points="80,26 96,64 138,68 106,94 116,136 80,114 44,136 54,94 22,68 64,64" fill="#fff7d6"/>
+  <polygon points="80,44 91,68 118,71 98,88 105,116 80,101 55,116 62,88 42,71 69,68" fill="#e0a520"/>
+</symbol>
+
+<symbol id="scene-cat-communication" viewBox="0 0 160 160">
+  <defs><linearGradient id="g-cc-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1c2f47"/><stop offset="100%" stop-color="#a13a26"/></linearGradient></defs>
+  <rect width="160" height="160" rx="20" fill="url(#g-cc-bg)"/>
+  <rect x="26" y="38" width="108" height="66" rx="12" fill="#fdfaf1"/>
+  <polygon points="52,104 52,124 78,104" fill="#fdfaf1"/>
+  <circle cx="60" cy="70" r="7" fill="#a13a26"/><circle cx="80" cy="70" r="7" fill="#e6835f"/><circle cx="100" cy="70" r="7" fill="#c1601f"/>
+</symbol>
+
 </defs>
 </svg>
 
@@ -684,9 +780,13 @@
   <section class="panel" id="panel-vocab">
     <div class="card">
       <h2>Từ vựng &amp; collocation</h2>
-      <p class="sub">Bấm vào thẻ để lật. Thẻ được chọn ưu tiên theo mức độ bạn chưa nhớ (kiểu Leitner).</p>
+      <p class="sub">Ôn theo lịch lặp lại ngắt quãng (spaced repetition) như Anki — thẻ dễ giãn cách ra xa dần, thẻ khó quay lại sớm hơn.</p>
+      <div class="vp-row" style="margin-bottom:14px;">
+        <label for="topicFilter" style="width:auto;">Chủ đề</label>
+        <select id="topicFilter"></select>
+      </div>
       <div class="flash-wrap">
-        <div class="progress-line" id="vocabProgress">Thẻ 1/8 trong phiên · <span class="box-pill">Box —</span></div>
+        <div class="progress-line" id="vocabProgress">—</div>
         <div class="flashcard" id="flashcard">
           <div class="flash-inner" id="flashInner">
             <div class="flash-face flash-front">
@@ -703,12 +803,15 @@
             </div>
           </div>
         </div>
-        <div class="btn-row" id="vocabBtnRow">
-          <button class="btn" id="vocabForgot" type="button">Chưa nhớ</button>
-          <button class="btn btn-primary" id="vocabKnew" type="button">Nhớ rồi</button>
+        <div class="srs-row" id="vocabBtnRow">
+          <button class="srs-btn srs-again" id="vocabAgain" type="button"><span class="srs-label">Again</span><span class="srs-sub" id="prevAgain">1d</span></button>
+          <button class="srs-btn srs-hard" id="vocabHard" type="button"><span class="srs-label">Hard</span><span class="srs-sub" id="prevHard">—</span></button>
+          <button class="srs-btn srs-good" id="vocabGood" type="button"><span class="srs-label">Good</span><span class="srs-sub" id="prevGood">—</span></button>
+          <button class="srs-btn srs-easy" id="vocabEasy" type="button"><span class="srs-label">Easy</span><span class="srs-sub" id="prevEasy">—</span></button>
         </div>
-        <div class="btn-row" id="vocabRestartRow" style="display:none;">
-          <button class="btn btn-primary" id="vocabRestart" type="button">Bắt đầu phiên mới</button>
+        <div class="btn-row" id="vocabRestartRow" style="display:none; flex-direction:column; align-items:center; text-align:center;">
+          <p class="sub" id="vocabDoneMsg" style="margin-bottom:12px;"></p>
+          <button class="btn btn-primary" id="vocabExtra" type="button" style="display:none;">Học thêm 10 từ mới</button>
         </div>
       </div>
     </div>
@@ -816,26 +919,114 @@
 
   /* ============ CONTENT ============ */
   var VOCAB = [
-    {en:"achieve a goal", ipa:"/əˈtʃiːv/", vi:"đạt được mục tiêu", ex:"She achieved her goal of running a marathon.", note:"Không dùng 'achieve' cho núi — xem thẻ 'reach a peak'.", icon:"goal"},
-    {en:"reach / climb a peak", ipa:"/riːtʃ/ /klaɪm/", vi:"chinh phục một đỉnh núi", ex:"They finally reached the peak after six hours.", note:"Collocation đúng thay cho 'achieve a peak'.", icon:"peak"},
-    {en:"get along with sb", ipa:"/ɡet əˈlɔːŋ wɪð/", vi:"hòa hợp, hợp nhau với ai đó", ex:"I get along well with my new colleagues.", note:"KHÔNG có nghĩa 'đi cùng ai đó'.", icon:"getalong"},
-    {en:"reluctant (to do sth)", ipa:"/rɪˈlʌktənt/", vi:"miễn cưỡng, không muốn", ex:"He was reluctant to sign the contract.", note:"Luôn đi với 'to V'.", icon:"reluctant"},
-    {en:"look forward to sth", ipa:"/lʊk ˈfɔːwəd tuː/", vi:"mong chờ điều gì", ex:"I'm looking forward to the weekend.", note:"'to' ở đây là giới từ → theo sau là V-ing/danh từ, không phải V nguyên mẫu.", icon:"forwardto"},
-    {en:"in charge of sth", ipa:"/ɪn tʃɑːdʒ əv/", vi:"phụ trách, chịu trách nhiệm về", ex:"She is in charge of the marketing team.", note:"Không dùng 'in charge for'.", icon:"incharge"},
-    {en:"make a decision", ipa:"/meɪk ə dɪˈsɪʒn/", vi:"đưa ra quyết định", ex:"We need to make a decision by Friday.", note:"Dùng 'make', không dùng 'do a decision'.", icon:"decision"},
-    {en:"take place", ipa:"/teɪk pleɪs/", vi:"diễn ra, xảy ra", ex:"The wedding took place in a small church.", note:"Không cần giới từ trước 'place' ở đây.", icon:"takeplace"},
-    {en:"run out of sth", ipa:"/rʌn aʊt əv/", vi:"hết, cạn kiệt thứ gì", ex:"We ran out of milk this morning.", note:"Chủ ngữ là người/nơi hết đồ, không phải đồ vật.", icon:"runout"},
-    {en:"come up with sth", ipa:"/kʌm ʌp wɪð/", vi:"nghĩ ra, đề xuất", ex:"He came up with a great idea.", note:"Cụm động từ 3 thành phần, không tách rời.", icon:"comeup"},
-    {en:"give up (on sth)", ipa:"/ɡɪv ʌp/", vi:"từ bỏ", ex:"Don't give up on your dream.", note:"Có thể tách: give it up.", icon:"giveup"},
-    {en:"figure sth out", ipa:"/ˈfɪɡə aʊt/", vi:"tìm ra, hiểu ra", ex:"I finally figured out the problem.", note:"Cụm động từ có thể tách.", icon:"figureout"},
-    {en:"on purpose", ipa:"/ɒn ˈpɜːpəs/", vi:"cố ý", ex:"He didn't break it on purpose.", note:"Trái nghĩa với 'by accident'.", icon:"purpose"},
-    {en:"by accident", ipa:"/baɪ ˈæksɪdənt/", vi:"vô tình, tình cờ", ex:"I found the file by accident.", note:"Trái nghĩa với 'on purpose'.", icon:"accident"},
-    {en:"keep in touch", ipa:"/kiːp ɪn tʌtʃ/", vi:"giữ liên lạc", ex:"Let's keep in touch after graduation.", note:"Không dùng 'keep contact'.", icon:"touch"},
-    {en:"make progress", ipa:"/meɪk ˈprəʊɡres/", vi:"tiến bộ", ex:"You've made a lot of progress this month.", note:"'progress' không đếm được, không có 'a progress'.", icon:"progress"},
-    {en:"get used to sth", ipa:"/ɡet juːzd tuː/", vi:"quen dần với điều gì", ex:"I'm getting used to the new schedule.", note:"Khác với 'used to + V' (đã từng làm gì trong quá khứ).", icon:"usedto"},
-    {en:"point sth out", ipa:"/pɔɪnt aʊt/", vi:"chỉ ra, nêu ra", ex:"She pointed out a mistake in the report.", note:"Cụm động từ có thể tách.", icon:"pointout"},
-    {en:"put sth off", ipa:"/pʊt ɒf/", vi:"trì hoãn", ex:"Stop putting off your homework.", note:"Đồng nghĩa với 'postpone'.", icon:"putoff"},
-    {en:"catch up on sth", ipa:"/kætʃ ʌp ɒn/", vi:"bắt kịp, làm bù việc còn dang dở", ex:"I need to catch up on sleep this weekend.", note:"Thường đi với sleep, work, news.", icon:"catchup"}
+    {en:"achieve a goal", ipa:"/əˈtʃiːv/", vi:"đạt được mục tiêu", ex:"She achieved her goal of running a marathon.", note:"Không dùng 'achieve' cho núi — xem thẻ 'reach a peak'.", topic:"Cụm từ hay nhầm", icon:"goal"},
+    {en:"reach / climb a peak", ipa:"/riːtʃ/ /klaɪm/", vi:"chinh phục một đỉnh núi", ex:"They finally reached the peak after six hours.", note:"Collocation đúng thay cho 'achieve a peak'.", topic:"Cụm từ hay nhầm", icon:"peak"},
+    {en:"get along with sb", ipa:"/ɡet əˈlɔːŋ wɪð/", vi:"hòa hợp, hợp nhau với ai đó", ex:"I get along well with my new colleagues.", note:"KHÔNG có nghĩa 'đi cùng ai đó'.", topic:"Cụm từ hay nhầm", icon:"getalong"},
+    {en:"reluctant (to do sth)", ipa:"/rɪˈlʌktənt/", vi:"miễn cưỡng, không muốn", ex:"He was reluctant to sign the contract.", note:"Luôn đi với 'to V'.", topic:"Cụm từ hay nhầm", icon:"reluctant"},
+    {en:"look forward to sth", ipa:"/lʊk ˈfɔːwəd tuː/", vi:"mong chờ điều gì", ex:"I'm looking forward to the weekend.", note:"'to' ở đây là giới từ → theo sau là V-ing/danh từ, không phải V nguyên mẫu.", topic:"Cụm từ hay nhầm", icon:"forwardto"},
+    {en:"in charge of sth", ipa:"/ɪn tʃɑːdʒ əv/", vi:"phụ trách, chịu trách nhiệm về", ex:"She is in charge of the marketing team.", note:"Không dùng 'in charge for'.", topic:"Cụm từ hay nhầm", icon:"incharge"},
+    {en:"make a decision", ipa:"/meɪk ə dɪˈsɪʒn/", vi:"đưa ra quyết định", ex:"We need to make a decision by Friday.", note:"Dùng 'make', không dùng 'do a decision'.", topic:"Cụm từ hay nhầm", icon:"decision"},
+    {en:"take place", ipa:"/teɪk pleɪs/", vi:"diễn ra, xảy ra", ex:"The wedding took place in a small church.", note:"Không cần giới từ trước 'place' ở đây.", topic:"Cụm từ hay nhầm", icon:"takeplace"},
+    {en:"run out of sth", ipa:"/rʌn aʊt əv/", vi:"hết, cạn kiệt thứ gì", ex:"We ran out of milk this morning.", note:"Chủ ngữ là người/nơi hết đồ, không phải đồ vật.", topic:"Cụm từ hay nhầm", icon:"runout"},
+    {en:"come up with sth", ipa:"/kʌm ʌp wɪð/", vi:"nghĩ ra, đề xuất", ex:"He came up with a great idea.", note:"Cụm động từ 3 thành phần, không tách rời.", topic:"Cụm từ hay nhầm", icon:"comeup"},
+    {en:"give up (on sth)", ipa:"/ɡɪv ʌp/", vi:"từ bỏ", ex:"Don't give up on your dream.", note:"Có thể tách: give it up.", topic:"Cụm từ hay nhầm", icon:"giveup"},
+    {en:"figure sth out", ipa:"/ˈfɪɡə aʊt/", vi:"tìm ra, hiểu ra", ex:"I finally figured out the problem.", note:"Cụm động từ có thể tách.", topic:"Cụm từ hay nhầm", icon:"figureout"},
+    {en:"on purpose", ipa:"/ɒn ˈpɜːpəs/", vi:"cố ý", ex:"He didn't break it on purpose.", note:"Trái nghĩa với 'by accident'.", topic:"Cụm từ hay nhầm", icon:"purpose"},
+    {en:"by accident", ipa:"/baɪ ˈæksɪdənt/", vi:"vô tình, tình cờ", ex:"I found the file by accident.", note:"Trái nghĩa với 'on purpose'.", topic:"Cụm từ hay nhầm", icon:"accident"},
+    {en:"keep in touch", ipa:"/kiːp ɪn tʌtʃ/", vi:"giữ liên lạc", ex:"Let's keep in touch after graduation.", note:"Không dùng 'keep contact'.", topic:"Cụm từ hay nhầm", icon:"touch"},
+    {en:"make progress", ipa:"/meɪk ˈprəʊɡres/", vi:"tiến bộ", ex:"You've made a lot of progress this month.", note:"'progress' không đếm được, không có 'a progress'.", topic:"Cụm từ hay nhầm", icon:"progress"},
+    {en:"get used to sth", ipa:"/ɡet juːzd tuː/", vi:"quen dần với điều gì", ex:"I'm getting used to the new schedule.", note:"Khác với 'used to + V' (đã từng làm gì trong quá khứ).", topic:"Cụm từ hay nhầm", icon:"usedto"},
+    {en:"point sth out", ipa:"/pɔɪnt aʊt/", vi:"chỉ ra, nêu ra", ex:"She pointed out a mistake in the report.", note:"Cụm động từ có thể tách.", topic:"Cụm từ hay nhầm", icon:"pointout"},
+    {en:"put sth off", ipa:"/pʊt ɒf/", vi:"trì hoãn", ex:"Stop putting off your homework.", note:"Đồng nghĩa với 'postpone'.", topic:"Cụm từ hay nhầm", icon:"putoff"},
+    {en:"catch up on sth", ipa:"/kætʃ ʌp ɒn/", vi:"bắt kịp, làm bù việc còn dang dở", ex:"I need to catch up on sleep this weekend.", note:"Thường đi với sleep, work, news.", topic:"Cụm từ hay nhầm", icon:"catchup"},
+
+    {en:"deadline", ipa:"/ˈdedlaɪn/", vi:"hạn chót", ex:"I have to finish this report by the deadline.", note:"Danh từ, không phải động từ.", topic:"Công việc", icon:"cat-work"},
+    {en:"colleague", ipa:"/ˈkɒliːɡ/", vi:"đồng nghiệp", ex:"She's my colleague, not my boss.", note:"Chỉ người cùng làm, ngang cấp.", topic:"Công việc", icon:"cat-work"},
+    {en:"promotion", ipa:"/prəˈməʊʃn/", vi:"sự thăng chức", ex:"He got a promotion last month.", note:"Danh từ; động từ là 'promote sb'.", topic:"Công việc", icon:"cat-work"},
+    {en:"resign", ipa:"/rɪˈzaɪn/", vi:"từ chức, xin nghỉ việc", ex:"She decided to resign from her job.", note:"Đi với 'from + công việc'.", topic:"Công việc", icon:"cat-work"},
+    {en:"overtime", ipa:"/ˈəʊvətaɪm/", vi:"làm thêm giờ", ex:"I worked overtime to finish the project.", note:"'work overtime', không có 's'.", topic:"Công việc", icon:"cat-work"},
+    {en:"apply for a job", ipa:"/əˈplaɪ fɔːr/", vi:"nộp đơn xin việc", ex:"I applied for a job at that company.", note:"Luôn có 'for' sau apply khi xin việc.", topic:"Công việc", icon:"cat-work"},
+    {en:"job interview", ipa:"/dʒɒb ˈɪntəvjuː/", vi:"buổi phỏng vấn xin việc", ex:"I have a job interview tomorrow.", note:"'have an interview', không phải 'do'.", topic:"Công việc", icon:"cat-work"},
+    {en:"salary", ipa:"/ˈsæləri/", vi:"lương (cố định theo tháng/năm)", ex:"My salary increased this year.", note:"Khác 'wage' (lương theo giờ).", topic:"Công việc", icon:"cat-work"},
+    {en:"meet a deadline", ipa:"/miːt ə ˈdedlaɪn/", vi:"kịp hạn chót", ex:"We managed to meet the deadline.", note:"Trái nghĩa: miss a deadline.", topic:"Công việc", icon:"cat-work"},
+    {en:"get fired", ipa:"/ɡet ˈfaɪəd/", vi:"bị sa thải", ex:"He got fired for being late too often.", note:"Trái nghĩa: get hired (được nhận vào làm).", topic:"Công việc", icon:"cat-work"},
+
+    {en:"overwhelmed", ipa:"/ˌəʊvəˈwelmd/", vi:"choáng ngợp, quá tải", ex:"I feel overwhelmed with all this work.", note:"Tính từ, thường đi với 'feel/be'.", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"anxious", ipa:"/ˈæŋkʃəs/", vi:"lo lắng", ex:"She felt anxious before the exam.", note:"Đi với 'about sth'.", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"relieved", ipa:"/rɪˈliːvd/", vi:"nhẹ nhõm", ex:"I was relieved when the test results were good.", note:"Cảm giác sau khi hết lo lắng.", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"frustrated", ipa:"/frʌˈstreɪtɪd/", vi:"bực bội, thất vọng", ex:"He was frustrated with the slow internet.", note:"Đi với 'with/about sth'.", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"embarrassed", ipa:"/ɪmˈbærəst/", vi:"xấu hổ, ngượng", ex:"I was so embarrassed when I forgot her name.", note:"Không nhầm với 'embarrassing' (gây xấu hổ).", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"proud of sth", ipa:"/praʊd əv/", vi:"tự hào về", ex:"I'm proud of what you achieved.", note:"Luôn có 'of' theo sau.", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"jealous", ipa:"/ˈdʒeləs/", vi:"ghen tị", ex:"He was jealous of his brother's success.", note:"Đi với 'of sb/sth'.", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"grateful for sth", ipa:"/ˈɡreɪtfl fɔːr/", vi:"biết ơn về", ex:"I'm grateful for your help.", note:"Trang trọng hơn 'thankful'.", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"burst into tears", ipa:"/bɜːst ˈɪntuː tɪəz/", vi:"bật khóc", ex:"She burst into tears when she heard the news.", note:"'burst' giữ nguyên ở mọi thì trừ -ing/-s.", topic:"Cảm xúc", icon:"cat-emotion"},
+    {en:"in a good mood", ipa:"/ɪn ə ɡʊd muːd/", vi:"đang có tâm trạng tốt", ex:"He's always in a good mood on Fridays.", note:"Trái nghĩa: in a bad mood.", topic:"Cảm xúc", icon:"cat-emotion"},
+
+    {en:"on time", ipa:"/ɒn taɪm/", vi:"đúng giờ", ex:"Please arrive on time.", note:"Khác 'in time' (kịp lúc, trước khi quá muộn).", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"in time", ipa:"/ɪn taɪm/", vi:"kịp lúc", ex:"We got there just in time for the movie.", note:"Nhấn mạnh 'vừa kịp', khác 'on time' (đúng giờ đã định).", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"nowadays", ipa:"/ˈnaʊədeɪz/", vi:"ngày nay", ex:"Nowadays, everyone uses smartphones.", note:"Thường đứng đầu câu, có dấu phẩy.", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"from time to time", ipa:"/frəm taɪm tə taɪm/", vi:"thỉnh thoảng", ex:"We go hiking from time to time.", note:"Đồng nghĩa 'occasionally'.", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"run late", ipa:"/rʌn leɪt/", vi:"bị trễ giờ", ex:"Sorry, I'm running late today.", note:"Thường dùng thì tiếp diễn: 'I'm running late'.", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"day off", ipa:"/deɪ ɒf/", vi:"ngày nghỉ", ex:"I took a day off to rest.", note:"'take a day off', số nhiều: days off.", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"routine", ipa:"/ruːˈtiːn/", vi:"thói quen hàng ngày", ex:"Exercise is part of my morning routine.", note:"Danh từ chỉ cả một chuỗi việc làm quen thuộc.", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"wake up / get up", ipa:"/weɪk ʌp/ /ɡet ʌp/", vi:"thức giấc / ra khỏi giường", ex:"I woke up at 6 but got up at 6:30.", note:"Wake up = mở mắt tỉnh dậy; get up = rời khỏi giường.", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"procrastinate", ipa:"/prəˈkræstɪneɪt/", vi:"trì hoãn (thành thói quen)", ex:"Stop procrastinating and start studying.", note:"Gần nghĩa 'put off' nhưng nhấn thói quen trì hoãn.", topic:"Thời gian & thói quen", icon:"cat-time"},
+    {en:"in advance", ipa:"/ɪn ədˈvɑːns/", vi:"trước, trước thời hạn", ex:"Please book your ticket in advance.", note:"Đồng nghĩa 'beforehand'.", topic:"Thời gian & thói quen", icon:"cat-time"},
+
+    {en:"check in", ipa:"/tʃek ɪn/", vi:"làm thủ tục (khách sạn/sân bay)", ex:"We checked in at the hotel around noon.", note:"Trái nghĩa: check out.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"luggage", ipa:"/ˈlʌɡɪdʒ/", vi:"hành lý", ex:"I only brought one piece of luggage.", note:"Không đếm được, không có 'a luggage'.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"book a flight", ipa:"/bʊk ə flaɪt/", vi:"đặt vé máy bay", ex:"I booked a flight to Da Nang.", note:"'book' = đặt trước, dùng cho vé, phòng, bàn.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"layover", ipa:"/ˈleɪəʊvə/", vi:"thời gian quá cảnh", ex:"We had a two-hour layover in Bangkok.", note:"Ở Anh-Anh hay dùng 'stopover'.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"souvenir", ipa:"/ˌsuːvəˈnɪə/", vi:"quà lưu niệm", ex:"I bought a souvenir for my mom.", note:"Chú ý chính tả: souve-NIR.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"get lost", ipa:"/ɡet lɒst/", vi:"bị lạc đường", ex:"We got lost in the old town.", note:"Không dùng 'become lost'.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"currency exchange", ipa:"/ˈkʌrənsi ɪksˈtʃeɪndʒ/", vi:"đổi tiền tệ", ex:"Where's the nearest currency exchange?", note:"Cũng gọi là 'money exchange'.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"jet lag", ipa:"/dʒet læɡ/", vi:"mệt do lệch múi giờ", ex:"I had bad jet lag after the flight.", note:"Không đếm được: 'have jet lag'.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"sightseeing", ipa:"/ˈsaɪtsiːɪŋ/", vi:"tham quan, ngắm cảnh", ex:"We went sightseeing around the city.", note:"'go sightseeing', luôn có -ing.", topic:"Du lịch", icon:"cat-travel"},
+    {en:"off the beaten track", ipa:"/ɒf ðə ˈbiːtn træk/", vi:"ít người biết đến, xa lối mòn", ex:"This village is off the beaten track.", note:"Idiom chỉ nơi ít khách du lịch.", topic:"Du lịch", icon:"cat-travel"},
+
+    {en:"starving", ipa:"/ˈstɑːvɪŋ/", vi:"đói cồn cào (nói phóng đại)", ex:"I'm starving, let's eat now.", note:"Không dùng nghĩa đen 'chết đói' trong câu thường ngày.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"leftovers", ipa:"/ˈleftəʊvəz/", vi:"đồ ăn thừa", ex:"We had the leftovers for lunch.", note:"Luôn ở dạng số nhiều.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"skip a meal", ipa:"/skɪp ə miːl/", vi:"bỏ bữa", ex:"Don't skip breakfast, it's important.", note:"'skip' = bỏ qua, không làm.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"eat out", ipa:"/iːt aʊt/", vi:"ăn ngoài (nhà hàng)", ex:"We eat out every Friday night.", note:"Trái nghĩa: eat in / cook at home.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"grab a bite", ipa:"/ɡræb ə baɪt/", vi:"ăn nhanh (thân mật)", ex:"Let's grab a bite before the movie.", note:"Văn nói, không trang trọng.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"on a diet", ipa:"/ɒn ə ˈdaɪət/", vi:"đang ăn kiêng", ex:"She's on a diet these days.", note:"'go on a diet' = bắt đầu ăn kiêng.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"spicy", ipa:"/ˈspaɪsi/", vi:"cay", ex:"This soup is too spicy for me.", note:"Khác 'hot' (nóng) dù cũng có thể dùng cho vị cay.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"takeaway", ipa:"/ˈteɪkəweɪ/", vi:"đồ ăn mang đi", ex:"Let's order a takeaway tonight.", note:"Ở Mỹ dùng 'takeout'.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"treat sb to sth", ipa:"/triːt tə/", vi:"mời/đãi ai đó", ex:"I'll treat you to dinner tonight.", note:"Người mời trả tiền cho người kia.", topic:"Ăn uống", icon:"cat-food"},
+    {en:"cut down on sth", ipa:"/kʌt daʊn ɒn/", vi:"giảm bớt (đồ ăn/thói quen)", ex:"I'm trying to cut down on sugar.", note:"Không tách rời cụm động từ này.", topic:"Ăn uống", icon:"cat-food"},
+
+    {en:"look after sb", ipa:"/lʊk ˈɑːftər/", vi:"chăm sóc", ex:"Can you look after my dog this weekend?", note:"Đồng nghĩa 'take care of'.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"carry on", ipa:"/ˈkæri ɒn/", vi:"tiếp tục", ex:"Please carry on with your work.", note:"Đồng nghĩa 'continue'.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"turn down", ipa:"/tɜːn daʊn/", vi:"từ chối / vặn nhỏ", ex:"She turned down the job offer.", note:"Cũng dùng cho 'vặn nhỏ âm lượng'.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"hold on", ipa:"/həʊld ɒn/", vi:"chờ một chút", ex:"Hold on, I'll be right there.", note:"Thường dùng khi nói chuyện điện thoại.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"break down", ipa:"/breɪk daʊn/", vi:"hỏng (xe/máy) hoặc suy sụp", ex:"My car broke down on the highway.", note:"Cũng dùng cho cảm xúc: 'She broke down in tears'.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"bring up", ipa:"/brɪŋ ʌp/", vi:"nuôi dạy / nêu ra (chủ đề)", ex:"She was brought up in a small town.", note:"Cũng có nghĩa 'nêu vấn đề ra'.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"get over sth", ipa:"/ɡet ˈəʊvər/", vi:"vượt qua (khó khăn, bệnh, chia tay)", ex:"It took him months to get over the breakup.", note:"Không dùng cho 'vượt qua kỳ thi' (dùng pass).", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"show up", ipa:"/ʃəʊ ʌp/", vi:"xuất hiện, đến", ex:"He didn't show up for the meeting.", note:"Đồng nghĩa 'turn up'.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"work out", ipa:"/wɜːk aʊt/", vi:"tập thể dục / diễn ra ổn thoả", ex:"I work out three times a week.", note:"Cũng có nghĩa 'diễn ra tốt đẹp': Things worked out fine.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+    {en:"call off", ipa:"/kɔːl ɒf/", vi:"huỷ bỏ", ex:"They called off the wedding.", note:"Đồng nghĩa 'cancel'.", topic:"Cụm động từ thông dụng", icon:"cat-phrasal"},
+
+    {en:"reliable", ipa:"/rɪˈlaɪəbl/", vi:"đáng tin cậy", ex:"He's a reliable friend.", note:"Danh từ: reliability.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"exhausted", ipa:"/ɪɡˈzɔːstɪd/", vi:"kiệt sức", ex:"I'm exhausted after the trip.", note:"Mạnh hơn 'tired' nhiều.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"straightforward", ipa:"/ˌstreɪtˈfɔːwəd/", vi:"đơn giản, dễ hiểu", ex:"The instructions were straightforward.", note:"Viết liền, không có gạch nối.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"stubborn", ipa:"/ˈstʌbən/", vi:"bướng bỉnh, cứng đầu", ex:"My grandfather is very stubborn.", note:"Thường mang sắc thái hơi tiêu cực.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"flexible", ipa:"/ˈfleksəbl/", vi:"linh hoạt", ex:"My work schedule is flexible.", note:"Danh từ: flexibility.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"outgoing", ipa:"/ˈaʊtɡəʊɪŋ/", vi:"hướng ngoại, cởi mở", ex:"She's very outgoing and makes friends easily.", note:"Trái nghĩa: reserved / shy.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"considerate", ipa:"/kənˈsɪdərət/", vi:"biết quan tâm, chu đáo", ex:"He's very considerate of others' feelings.", note:"Khác 'considerable' (đáng kể).", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"picky", ipa:"/ˈpɪki/", vi:"kén chọn", ex:"My son is a picky eater.", note:"Văn nói, hơi thân mật.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"down-to-earth", ipa:"/ˌdaʊn tuː ˈɜːθ/", vi:"giản dị, thực tế", ex:"Despite being famous, she's very down-to-earth.", note:"Idiom, có gạch nối.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+    {en:"worth it", ipa:"/wɜːθ ɪt/", vi:"đáng giá, xứng đáng", ex:"The trip was long, but it was worth it.", note:"'worth' + V-ing cũng rất phổ biến: worth trying.", topic:"Tính từ mô tả", icon:"cat-adjective"},
+
+    {en:"get to the point", ipa:"/ɡet tə ðə pɔɪnt/", vi:"đi thẳng vào vấn đề", ex:"Please get to the point, we're short on time.", note:"Thường dùng khi ai đó nói vòng vo.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"small talk", ipa:"/smɔːl tɔːk/", vi:"chuyện phiếm, nói chuyện xã giao", ex:"We made small talk while waiting.", note:"'make small talk', không đếm được.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"change the subject", ipa:"/tʃeɪndʒ ðə ˈsʌbdʒɪkt/", vi:"đổi chủ đề", ex:"He tried to change the subject.", note:"Thường dùng khi né tránh câu hỏi.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"speak up", ipa:"/spiːk ʌp/", vi:"nói to hơn / lên tiếng", ex:"Can you speak up? I can't hear you.", note:"Cũng có nghĩa 'dám lên tiếng' về vấn đề gì.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"get the wrong idea", ipa:"/ɡet ðə rɒŋ aɪˈdɪə/", vi:"hiểu lầm", ex:"Don't get the wrong idea, I was just joking.", note:"Đồng nghĩa gần với 'misunderstand'.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"beat around the bush", ipa:"/biːt əˈraʊnd ðə bʊʃ/", vi:"nói vòng vo", ex:"Stop beating around the bush and tell me the truth.", note:"Idiom, trái nghĩa với 'get to the point'.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"in other words", ipa:"/ɪn ˈʌðə wɜːdz/", vi:"nói cách khác", ex:"In other words, we need more time.", note:"Dùng để diễn giải lại ý vừa nói.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"as far as I know", ipa:"/əz fɑːr əz aɪ nəʊ/", vi:"theo tôi được biết", ex:"As far as I know, the meeting is at 3 PM.", note:"Dùng khi không chắc chắn 100%.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"have a word with sb", ipa:"/hæv ə wɜːd wɪð/", vi:"nói chuyện riêng với ai", ex:"Can I have a word with you?", note:"Trang trọng hơn 'talk to sb'.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"},
+    {en:"speak one's mind", ipa:"/spiːk wʌnz maɪnd/", vi:"nói thẳng suy nghĩ", ex:"She always speaks her mind.", note:"Idiom chỉ tính cách thẳng thắn.", topic:"Giao tiếp hằng ngày", icon:"cat-communication"}
   ];
 
   var GRAMMAR = [
@@ -981,7 +1172,7 @@
   /* ============ STATE ============ */
   var DEFAULT_STATE = {
     xp:0, streak:0, lastActive:null,
-    vocabBox:{}, vocabSeenToday:0,
+    vocabSRS:{}, vocabNewDate:null, vocabNewCount:0, vocabExtraToday:0,
     grammarDone:{}, grammarCorrectMap:{}, grammarCorrect:0, grammarTotal:0,
     readingScore:{correct:0,total:0}, readingDone:{},
     listeningScore:{correct:0,total:0}, listeningDone:{},
@@ -995,7 +1186,7 @@
       var raw = localStorage.getItem("basecampEnglishState");
       if(!raw) return JSON.parse(JSON.stringify(DEFAULT_STATE));
       var s = JSON.parse(raw);
-      for(var k in DEFAULT_STATE){ if(!(k in s)) s[k] = DEFAULT_STATE[k]; }
+      for(var k in DEFAULT_STATE){ if(!(k in s)) s[k] = JSON.parse(JSON.stringify(DEFAULT_STATE[k])); }
       return s;
     }catch(e){ return JSON.parse(JSON.stringify(DEFAULT_STATE)); }
   }
@@ -1069,7 +1260,7 @@
         var localUpdated = state.updatedAt || 0;
         var cloudUpdated = cloud.updatedAt || 0;
         if(cloudUpdated > localUpdated){
-          for(var k in DEFAULT_STATE){ if(!(k in cloud)) cloud[k] = DEFAULT_STATE[k]; }
+          for(var k in DEFAULT_STATE){ if(!(k in cloud)) cloud[k] = JSON.parse(JSON.stringify(DEFAULT_STATE[k])); }
           state = cloud;
           save(true);
           refreshAllUI();
@@ -1155,11 +1346,12 @@
 
   /* ============ DASHBOARD ============ */
   function pct(correct,total){ return total ? Math.round((correct/total)*100) : 0; }
+  var MATURE_DAYS = 21;
   function vocabMastery(){
-    var boxes = Object.values(state.vocabBox);
-    if(!boxes.length) return 0;
-    var sum = boxes.reduce(function(a,b){return a+b;},0);
-    return Math.round((sum / (boxes.length*5)) * 100);
+    var cards = Object.values(state.vocabSRS);
+    if(!VOCAB.length) return 0;
+    var matureScore = cards.reduce(function(sum, c){ return sum + Math.min(1, c.interval / MATURE_DAYS); }, 0);
+    return Math.round((matureScore / VOCAB.length) * 100);
   }
   function writingMastery(){ return Math.min(100, state.writingEntries.length * 20); }
 
@@ -1208,31 +1400,135 @@
     }
   });
 
-  /* ============ VOCAB (Leitner) ============ */
-  var vocabQueue = [], vocabIdx = 0, flipped = false;
+  /* ============ VOCAB (SM-2 spaced repetition, à la Anki) ============ */
+  var NEW_CARDS_PER_DAY = 10;
+  var TOPICS = [];
+  VOCAB.forEach(function(v){ if(TOPICS.indexOf(v.topic) === -1) TOPICS.push(v.topic); });
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){
+      var j = Math.floor(Math.random()*(i+1));
+      var t=a[i]; a[i]=a[j]; a[j]=t;
+    }
+    return a;
+  }
+  function daysBetween(dateStr, todayStr2){
+    return Math.round((new Date(todayStr2) - new Date(dateStr)) / 86400000);
+  }
+  function computeSM2(card, rating){
+    var ease = card ? card.ease : 2.5;
+    var interval = card ? card.interval : 0;
+    var reps = card ? card.reps : 0;
+    var lapses = card ? (card.lapses || 0) : 0;
+    var newInterval, newEase = ease, newReps = reps;
+    if(rating === "again"){
+      newReps = 0;
+      newInterval = 1;
+      newEase = Math.max(1.3, ease - 0.20);
+      lapses += 1;
+    } else if(rating === "hard"){
+      newInterval = Math.max(1, Math.round((interval || 1) * 1.2));
+      newEase = Math.max(1.3, ease - 0.15);
+      newReps = reps + 1;
+    } else if(rating === "good"){
+      if(reps === 0) newInterval = 1;
+      else if(reps === 1) newInterval = 6;
+      else newInterval = Math.round(interval * ease);
+      newReps = reps + 1;
+    } else { // easy
+      if(reps === 0) newInterval = 4;
+      else newInterval = Math.round(Math.max(interval,1) * ease * 1.3);
+      newEase = ease + 0.15;
+      newReps = reps + 1;
+    }
+    var due = new Date();
+    due.setDate(due.getDate() + newInterval);
+    return {interval:newInterval, ease:Math.round(newEase*100)/100, reps:newReps, due:due.toISOString().slice(0,10), lapses:lapses};
+  }
+
+  function resetNewCounterIfNeeded(){
+    var today = todayStr();
+    if(state.vocabNewDate !== today){ state.vocabNewDate = today; state.vocabNewCount = 0; state.vocabExtraToday = 0; save(); }
+  }
+
+  var vocabQueue = [], vocabIdx = 0, flipped = false, currentTopic = "all", vocabDueCountTotal = 0, vocabNewAvailable = 0;
+
+  function poolForTopic(){
+    return currentTopic === "all" ? VOCAB.map(function(v,i){return i;}) : VOCAB.reduce(function(acc,v,i){ if(v.topic===currentTopic) acc.push(i); return acc; }, []);
+  }
+
+  function buildVocabQueue(){
+    resetNewCounterIfNeeded();
+    var today = todayStr();
+    var pool = poolForTopic();
+    var due = [], fresh = [];
+    pool.forEach(function(i){
+      var s = state.vocabSRS[i];
+      if(s){ if(s.due <= today) due.push({i:i, srs:s}); }
+      else { fresh.push({i:i}); }
+    });
+    due = shuffle(due);
+    vocabDueCountTotal = due.length;
+    vocabNewAvailable = fresh.length;
+    var remainingNewQuota = Math.max(0, NEW_CARDS_PER_DAY + state.vocabExtraToday - state.vocabNewCount);
+    var newBatch = shuffle(fresh).slice(0, remainingNewQuota);
+    vocabQueue = due.concat(newBatch).map(function(x){ return {v:VOCAB[x.i], i:x.i, isNew: !x.srs}; });
+  }
+
   function initVocabSession(){
-    var withBox = VOCAB.map(function(v,i){ return {v:v, i:i, box: state.vocabBox[i] || 1}; });
-    withBox.sort(function(a,b){ return a.box - b.box; });
-    vocabQueue = withBox.slice(0, 8);
+    currentTopic = document.getElementById("topicFilter") ? (document.getElementById("topicFilter").value || "all") : "all";
+    buildVocabQueue();
     vocabIdx = 0;
     flipped = false;
     renderFlashcard();
   }
+
+  function populateTopicFilter(){
+    var sel = document.getElementById("topicFilter");
+    if(!sel) return;
+    sel.innerHTML = '<option value="all">Tất cả chủ đề (' + VOCAB.length + ' từ)</option>' +
+      TOPICS.map(function(t){
+        var count = VOCAB.filter(function(v){return v.topic===t;}).length;
+        return '<option value="'+t+'">'+t+' ('+count+' từ)</option>';
+      }).join("");
+    sel.addEventListener("change", function(){ initVocabSession(); });
+  }
+
+  function fmtInterval(days){
+    if(days < 1) return "<1d";
+    if(days === 1) return "1d";
+    if(days < 30) return days + "d";
+    if(days < 365) return Math.round(days/30) + "mo";
+    return Math.round(days/365*10)/10 + "y";
+  }
+
   function renderFlashcard(){
+    var dueLeft = vocabQueue.length - vocabIdx;
     if(vocabIdx >= vocabQueue.length){
-      document.getElementById("flashWord").textContent = "Hoàn thành phiên!";
-      document.getElementById("flashIpa").textContent = "Bạn đã ôn xong " + vocabQueue.length + " thẻ trong phiên này";
-      document.getElementById("vocabProgress").textContent = "Đã xong " + vocabQueue.length + " thẻ · bấm bên dưới để ôn tiếp";
+      document.getElementById("vocabBtnRow").style.display = "none";
+      document.getElementById("vocabRestartRow").style.display = "flex";
+      document.getElementById("flashWord").textContent = "Đã ôn xong!";
+      document.getElementById("flashIpa").textContent = "";
       document.getElementById("flashVi").textContent = "";
       document.getElementById("flashEx").textContent = "";
       document.getElementById("flashNote").textContent = "";
-      document.getElementById("vocabBtnRow").style.display = "none";
-      document.getElementById("vocabRestartRow").style.display = "flex";
+      document.getElementById("vocabProgress").textContent = "Không còn thẻ nào đến hạn ngay bây giờ.";
+      var extraBtn = document.getElementById("vocabExtra");
+      var remainingUnseen = vocabNewAvailable - (state.vocabNewCount) ;
+      if(remainingUnseen > 0){
+        extraBtn.style.display = "inline-flex";
+        document.getElementById("vocabDoneMsg").textContent = "Bạn đã ôn hết thẻ đến hạn hôm nay và học đủ " + NEW_CARDS_PER_DAY + " từ mới. Vẫn còn " + remainingUnseen + " từ chưa học nếu bạn muốn học thêm.";
+      } else {
+        extraBtn.style.display = "none";
+        document.getElementById("vocabDoneMsg").textContent = "Tuyệt vời — bạn đã ôn hết thẻ đến hạn và học hết từ mới cho hôm nay. Quay lại vào ngày mai để ôn tiếp theo lịch.";
+      }
       return;
     }
-    document.getElementById("vocabBtnRow").style.display = "flex";
+    document.getElementById("vocabBtnRow").style.display = "grid";
     document.getElementById("vocabRestartRow").style.display = "none";
     var item = vocabQueue[vocabIdx];
+    var card = state.vocabSRS[item.i];
     document.getElementById("flashWord").textContent = item.v.en;
     document.getElementById("flashIpa").textContent = item.v.ipa;
     document.getElementById("flashVi").textContent = item.v.vi;
@@ -1240,7 +1536,19 @@
     document.getElementById("flashNote").textContent = item.v.note;
     document.getElementById("flashIconFront").setAttribute("href", "#scene-" + item.v.icon);
     document.getElementById("flashIconBack").setAttribute("href", "#scene-" + item.v.icon);
-    document.getElementById("vocabProgress").innerHTML = "Thẻ " + (vocabIdx+1) + "/" + vocabQueue.length + " trong phiên · <span class='box-pill'>Box " + item.box + "/5</span>";
+
+    var newIntroducedSoFar = vocabQueue.slice(0, vocabIdx).filter(function(q){return q.isNew;}).length;
+    var dueBadge = (dueLeft) + " thẻ còn lại";
+    document.getElementById("vocabProgress").innerHTML =
+      '<span class="due-pill due">' + vocabDueCountTotal + ' đến hạn</span>' +
+      '<span class="due-pill new">' + Math.min(NEW_CARDS_PER_DAY + state.vocabExtraToday, vocabNewAvailable) + ' mới</span>' +
+      dueBadge + (item.isNew ? " · từ mới" : " · Box đã học " + card.reps + " lần, cách " + fmtInterval(card.interval));
+
+    document.getElementById("prevAgain").textContent = fmtInterval(computeSM2(card, "again").interval);
+    document.getElementById("prevHard").textContent = fmtInterval(computeSM2(card, "hard").interval);
+    document.getElementById("prevGood").textContent = fmtInterval(computeSM2(card, "good").interval);
+    document.getElementById("prevEasy").textContent = fmtInterval(computeSM2(card, "easy").interval);
+
     document.getElementById("flashInner").classList.remove("flipped");
     flipped = false;
   }
@@ -1249,19 +1557,31 @@
     flipped = !flipped;
     document.getElementById("flashInner").classList.toggle("flipped", flipped);
   });
-  function vocabAnswer(knew){
+  function rateCard(rating){
     if(vocabIdx >= vocabQueue.length) return;
     var item = vocabQueue[vocabIdx];
-    var box = state.vocabBox[item.i] || 1;
-    box = knew ? Math.min(5, box+1) : 1;
-    state.vocabBox[item.i] = box;
-    addXp(knew ? 5 : 2);
+    var wasNew = item.isNew;
+    var prevCard = state.vocabSRS[item.i];
+    var result = computeSM2(prevCard, rating);
+    state.vocabSRS[item.i] = result;
+    if(wasNew){ state.vocabNewCount += 1; }
+    var xpMap = {again:1, hard:3, good:6, easy:9};
+    addXp(xpMap[rating]);
+    save();
     vocabIdx++;
     renderFlashcard();
   }
-  document.getElementById("vocabKnew").addEventListener("click", function(){ vocabAnswer(true); });
-  document.getElementById("vocabForgot").addEventListener("click", function(){ vocabAnswer(false); });
-  document.getElementById("vocabRestart").addEventListener("click", function(){ initVocabSession(); });
+  document.getElementById("vocabAgain").addEventListener("click", function(){ rateCard("again"); });
+  document.getElementById("vocabHard").addEventListener("click", function(){ rateCard("hard"); });
+  document.getElementById("vocabGood").addEventListener("click", function(){ rateCard("good"); });
+  document.getElementById("vocabEasy").addEventListener("click", function(){ rateCard("easy"); });
+  document.getElementById("vocabExtra").addEventListener("click", function(){
+    state.vocabExtraToday = (state.vocabExtraToday || 0) + NEW_CARDS_PER_DAY;
+    save();
+    buildVocabQueue();
+    vocabIdx = 0;
+    renderFlashcard();
+  });
 
   /* ============ GRAMMAR ============ */
   function renderGrammar(){
@@ -1829,6 +2149,7 @@
   touchStreak();
   renderHeader();
   renderDashboard();
+  populateTopicFilter();
   initVocabSession();
   renderGrammar();
   renderPassageList(); renderPassageBody();
